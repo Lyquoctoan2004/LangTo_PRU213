@@ -1,0 +1,23 @@
+[
+  { "Name": "CHIEF_D3_00", "NpcId": "NPC_Chief", "RequireFlags": [ "Quest.Q17.Active", "Quest.Q16.Done" ], "BlockFlags": [], "Dialogue": "CHIEF_D3_DAY_END" },
+  { "Name": "CHIEF_D3_01", "NpcId": "NPC_Chief", "RequireFlags": [ "Quest.Q17.Active" ], "BlockFlags": [], "Dialogue": "CHIEF_D3_REST" },
+  { "Name": "CHIEF_D3_02", "NpcId": "NPC_Chief", "RequireFlags": [ "Quest.Q14.Active", "Quest.Q12.Done" ], "BlockFlags": [ "Obj.Q14.TalkChief" ], "Dialogue": "CHIEF_D3_MORNING" },
+  { "Name": "CHIEF_D3_03", "NpcId": "NPC_Chief", "RequireFlags": [ "Quest.Q14.Active" ], "BlockFlags": [ "Obj.Q14.TalkChief" ], "Dialogue": "CHIEF_D3_MORNING_LEFT" },
+  { "Name": "CHIEF_D3_04", "NpcId": "NPC_Chief", "RequireFlags": [ "Day3.Complete" ], "BlockFlags": [], "Dialogue": "CHIEF_D3_AFTER" },
+  { "Name": "CHIEF_D3_05", "NpcId": "NPC_Chief", "RequireFlags": [ "Quest.Q16.Active" ], "BlockFlags": [], "Dialogue": "CHIEF_D3_HINT_SPIN" },
+  { "Name": "CHIEF_D3_06", "NpcId": "NPC_Chief", "RequireFlags": [ "Quest.Q15.Active" ], "BlockFlags": [], "Dialogue": "CHIEF_D3_HINT_SILK" },
+  { "Name": "CHIEF_D3_07", "NpcId": "NPC_Chief", "RequireFlags": [ "Day3.Started" ], "BlockFlags": [ "Quest.Q12.Done" ], "Dialogue": "CHIEF_D3_HINT_LEFT" },
+
+  { "Name": "SILK_D3_01", "NpcId": "NPC_SilkMaster", "RequireFlags": [ "Quest.Q15.Active", "Obj.Q15.ReelSilk" ], "BlockFlags": [ "Obj.Q15.Feedback" ], "Dialogue": "SILK_D3_FEEDBACK" },
+  { "Name": "SILK_D3_02", "NpcId": "NPC_SilkMaster", "RequireFlags": [ "Quest.Q15.Active" ], "BlockFlags": [], "Dialogue": "SILK_D3_HINT" },
+  { "Name": "SILK_D3_03", "NpcId": "NPC_SilkMaster", "RequireFlags": [ "Day3.Complete" ], "BlockFlags": [], "Dialogue": "SILK_D3_AFTER_DAY" },
+  { "Name": "SILK_D3_04", "NpcId": "NPC_SilkMaster", "RequireFlags": [ "Quest.Q15.Done" ], "BlockFlags": [], "Dialogue": "SILK_D3_NEXT" },
+
+  { "Name": "DYER_D3_01", "NpcId": "NPC_ThreadDyer", "RequireFlags": [ "Quest.Q16.Active" ], "BlockFlags": [ "Obj.Q16.BringSilk" ], "Dialogue": "DYER_D3_SPIN_INTRO" },
+  { "Name": "DYER_D3_02", "NpcId": "NPC_ThreadDyer", "RequireFlags": [ "Quest.Q16.Active" ], "BlockFlags": [], "Dialogue": "DYER_D3_SPIN_HINT" },
+  { "Name": "DYER_D3_03", "NpcId": "NPC_ThreadDyer", "RequireFlags": [ "Quest.Q16.Done" ], "BlockFlags": [], "Dialogue": "DYER_D3_AFTER" },
+  { "Name": "DYER_D3_04", "NpcId": "NPC_ThreadDyer", "RequireFlags": [ "Day3.Started" ], "BlockFlags": [], "Dialogue": "DYER_D3_WAIT" },
+
+  { "Name": "WEAVER_D3_01", "NpcId": "NPC_WeaverTailor", "RequireFlags": [ "Day3.Complete" ], "BlockFlags": [], "Dialogue": "WEAVER_D3_AFTER" },
+  { "Name": "WEAVER_D3_02", "NpcId": "NPC_WeaverTailor", "RequireFlags": [ "Day3.Started" ], "BlockFlags": [], "Dialogue": "WEAVER_D3_WAIT" }
+]

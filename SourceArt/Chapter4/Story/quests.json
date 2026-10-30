@@ -1,0 +1,62 @@
+[
+  {
+    "Name": "Q18",
+    "Title": "Ngày 4 – Sắc màu của làng",
+    "Objectives": [
+      { "Id": "TalkChief", "Text": "Gặp bà Xuân và cô Lụa ở sân lễ hội", "Target": 1, "TrackItem": "None" }
+    ],
+    "OnComplete": []
+  },
+  {
+    "Name": "Q19",
+    "Title": "Quest – Tìm nguyên liệu nhuộm (Find the Dye)",
+    "Objectives": [
+      { "Id": "MeetDyer", "Text": "Gặp cô Mai ở nhà nhuộm (bên suối)", "Target": 1, "TrackItem": "None" },
+      { "Id": "Material", "Text": "Hái nguyên liệu tự nhiên (lá, vỏ cây, đất màu) quanh làng", "Target": 3, "TrackItem": "DYE_MATERIAL_001" },
+      { "Id": "Water", "Text": "Lấy nước ở suối", "Target": 1, "TrackItem": "DYE_WATER_001" }
+    ],
+    "OnComplete": [
+      "ClearFlag:Gather.On",
+      "Notify:Đã đủ nguyên liệu nhuộm – quay lại gặp cô Mai",
+      "SetFlag:Need.NPC_ThreadDyer",
+      "StartQuest:Q20"
+    ]
+  },
+  {
+    "Name": "Q20",
+    "Title": "Quest – Nhuộm sợi tơ (Dyeing)",
+    "Objectives": [
+      { "Id": "ChooseColor", "Text": "Chọn màu muốn nhuộm với cô Mai", "Target": 1, "TrackItem": "None" },
+      { "Id": "Dye", "Text": "Nhuộm sợi tơ ở nồi nhuộm (nhiệt độ, lượng thuốc, thời gian)", "Target": 1, "TrackItem": "None" }
+    ],
+    "OnComplete": [
+      "SetFlag:Knowledge.Dyeing",
+      "AddCulture:4",
+      "Notify:NHUỘM HOÀN TẤT · Vật liệu mới: Sợi tơ nhuộm màu · Hãy sang gặp cô Lụa để dệt",
+      "SetFlag:Need.NPC_WeaverTailor",
+      "StartQuest:Q21"
+    ]
+  },
+  {
+    "Name": "Q21",
+    "Title": "Quest – Dệt tấm vải đầu tiên (Weave the First Cloth)",
+    "Objectives": [
+      { "Id": "TalkWeaver", "Text": "Gặp cô Lụa ở xưởng dệt", "Target": 1, "TrackItem": "None" },
+      { "Id": "Weave", "Text": "Dệt vải ở khung dệt (giữ nhịp, đưa thoi, giữ độ căng)", "Target": 1, "TrackItem": "None" }
+    ],
+    "OnComplete": [
+      "SetFlag:Knowledge.Weaving",
+      "SetFlag:Unlock.TailoringHouse",
+      "Notify:TẤM VẢI ĐẦU TIÊN ĐÃ HOÀN THÀNH · Mở khóa: Nhà may",
+      "StartQuest:Q22"
+    ]
+  },
+  {
+    "Name": "Q22",
+    "Title": "Kết thúc Ngày 4 – Về sân lễ hội",
+    "Objectives": [
+      { "Id": "ReturnChief", "Text": "Gặp bà Xuân ở sân lễ hội", "Target": 1, "TrackItem": "None" }
+    ],
+    "OnComplete": []
+  }
+]

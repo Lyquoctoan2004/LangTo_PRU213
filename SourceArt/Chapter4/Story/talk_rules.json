@@ -1,0 +1,18 @@
+[
+  { "Name": "CHIEF_D4_00", "NpcId": "NPC_Chief", "RequireFlags": [ "Quest.Q22.Active" ], "BlockFlags": [], "Dialogue": "CHIEF_D4_END" },
+  { "Name": "CHIEF_D4_01", "NpcId": "NPC_Chief", "RequireFlags": [ "Quest.Q18.Active" ], "BlockFlags": [ "Obj.Q18.TalkChief" ], "Dialogue": "CHIEF_D4_MORNING" },
+  { "Name": "CHIEF_D4_02", "NpcId": "NPC_Chief", "RequireFlags": [ "Day4.Started" ], "BlockFlags": [ "Day4.Complete" ], "Dialogue": "CHIEF_D4_HINT" },
+
+  { "Name": "DYER_D4_00", "NpcId": "NPC_ThreadDyer", "RequireFlags": [ "Quest.Q19.Active" ], "BlockFlags": [ "Obj.Q19.MeetDyer" ], "Dialogue": "DYER_D4_INTRO" },
+  { "Name": "DYER_D4_01", "NpcId": "NPC_ThreadDyer", "RequireFlags": [ "Quest.Q19.Active" ], "BlockFlags": [], "Dialogue": "DYER_D4_HINT" },
+  { "Name": "DYER_D4_02", "NpcId": "NPC_ThreadDyer", "RequireFlags": [ "Quest.Q20.Active" ], "BlockFlags": [ "Obj.Q20.ChooseColor" ], "Dialogue": "DYER_D4_COLOR" },
+  { "Name": "DYER_D4_03", "NpcId": "NPC_ThreadDyer", "RequireFlags": [ "Quest.Q20.Active" ], "BlockFlags": [], "Dialogue": "DYER_D4_DYE_HINT" },
+  { "Name": "DYER_D4_04", "NpcId": "NPC_ThreadDyer", "RequireFlags": [ "Day4.Started" ], "BlockFlags": [ "Day5.Started" ], "Dialogue": "DYER_D4_AFTER" },
+
+  { "Name": "WEAVER_D4_00", "NpcId": "NPC_WeaverTailor", "RequireFlags": [ "Quest.Q21.Active" ], "BlockFlags": [ "Obj.Q21.TalkWeaver" ], "Dialogue": "WEAVER_D4_INTRO" },
+  { "Name": "WEAVER_D4_01", "NpcId": "NPC_WeaverTailor", "RequireFlags": [ "Quest.Q21.Active" ], "BlockFlags": [], "Dialogue": "WEAVER_D4_HINT" },
+  { "Name": "WEAVER_D4_02", "NpcId": "NPC_WeaverTailor", "RequireFlags": [ "Quest.Q22.Active" ], "BlockFlags": [], "Dialogue": "WEAVER_D4_DONE" },
+  { "Name": "WEAVER_D4_03", "NpcId": "NPC_WeaverTailor", "RequireFlags": [ "Quest.Q19.Active" ], "BlockFlags": [], "Dialogue": "WEAVER_D4_HINT" },
+
+  { "Name": "SILK_D4_00", "NpcId": "NPC_SilkMaster", "RequireFlags": [ "Day4.Started" ], "BlockFlags": [ "Day5.Started" ], "Dialogue": "SILK_D4_IDLE" }
+]

@@ -1,0 +1,163 @@
+[
+  {
+    "Name": "CHIEF_D4_MORNING",
+    "Lines": [
+      { "Speaker": "Bà Xuân · Trưởng làng", "Text": "(Cả làng khác hẳn mấy hôm trước: dải vải nhiều màu treo dọc đường, trẻ con chạy qua với những chiếc khăn sặc sỡ, tiếng khung dệt vang từ xưởng.) Chào cháu, ngày thứ tư rồi." },
+      { "Speaker": "Bà Xuân · Trưởng làng", "Text": "Cháu đã biết cách tạo ra sợi tơ. Nhưng một sợi tơ vẫn chưa thể trở thành một bộ trang phục." },
+      { "Speaker": "Cô Lụa · Nghệ nhân dệt & may", "Text": "(Cô Lụa cầm cuộn sợi cháu se hôm qua lên.) Trước khi đưa vào khung dệt, chúng ta phải cho nó màu sắc." },
+      { "Speaker": "Cô Lụa · Nghệ nhân dệt & may", "Text": "Cháu sang nhà nhuộm bên suối gặp cô Mai. Mỗi màu đều có cách tạo ra riêng đấy." }
+    ],
+    "Choices": [],
+    "Actions": [
+      "Progress:Q18.TalkChief",
+      "SetFlag:Day4.Started",
+      "SetFlag:Need.NPC_ThreadDyer",
+      "StartQuest:Q19"
+    ]
+  },
+  {
+    "Name": "CHIEF_D4_HINT",
+    "Lines": [
+      { "Speaker": "Bà Xuân · Trưởng làng", "Text": "Sợi tơ phải có màu rồi mới dệt được. Cháu cứ theo lời cô Mai, xong thì sang cô Lụa dệt thành tấm vải." }
+    ],
+    "Choices": [],
+    "Actions": []
+  },
+  {
+    "Name": "CHIEF_D4_END",
+    "Lines": [
+      { "Speaker": "Bà Xuân · Trưởng làng", "Text": "(Hoàng hôn buông xuống. Bà nhìn tấm vải cháu mang theo, đưa tay sờ lên mặt vải.) Cháu đã đi được một chặng đường dài." },
+      { "Speaker": "Bà Xuân · Trưởng làng", "Text": "Nhưng vẫn còn một bước nữa. Biến tấm vải này thành thứ có thể mang theo bên mình." },
+      { "Speaker": "Bà Xuân · Trưởng làng", "Text": "(Bà nhìn về phía nhà may.) Ngày mai cô Lụa sẽ mở cửa nhà may cho cháu. Nghỉ ngơi cho khỏe nhé." }
+    ],
+    "Choices": [],
+    "Actions": [
+      "Progress:Q22.ReturnChief",
+      "EndDay:D4"
+    ]
+  },
+
+  {
+    "Name": "DYER_D4_INTRO",
+    "Lines": [
+      { "Speaker": "Cô Mai · Nghệ nhân se tơ & nhuộm", "Text": "(Trong nhà nhuộm đầy nồi nhuộm, chậu nước, giá phơi và những bó sợi nhiều màu.) Cháu đến rồi à. Cô Lụa nhắn trước rồi." },
+      { "Speaker": "Cô Mai · Nghệ nhân se tơ & nhuộm", "Text": "Mỗi màu đều có cách tạo ra riêng. Không phải cứ cho sợi vào nước màu là có được một màu đẹp." },
+      { "Speaker": "Cô Mai · Nghệ nhân se tơ & nhuộm", "Text": "Muốn nhuộm một màu, cần nguyên liệu tự nhiên ba phần – lá, vỏ cây, đất màu quanh làng – và một phần nước suối. Cháu đi tìm đủ rồi quay lại." },
+      { "Speaker": "Cô Mai · Nghệ nhân se tơ & nhuộm", "Text": "(Cô cười.) Vật liệu ở khắp nơi: vườn, bờ suối, rừng. Tìm gần thì dễ, tìm xa thì được nhiều thứ lạ hơn đấy." }
+    ],
+    "Choices": [],
+    "Actions": [
+      "Progress:Q19.MeetDyer",
+      "SetFlag:Gather.On"
+    ]
+  },
+  {
+    "Name": "DYER_D4_HINT",
+    "Lines": [
+      { "Speaker": "Cô Mai · Nghệ nhân se tơ & nhuộm", "Text": "Cháu cần ba phần nguyên liệu tự nhiên và một phần nước. Hái ở các bụi quanh nhà, lấy nước ở suối." }
+    ],
+    "Choices": [],
+    "Actions": [ "SetFlag:Gather.On" ]
+  },
+  {
+    "Name": "DYER_D4_COLOR",
+    "Lines": [
+      { "Speaker": "Cô Mai · Nghệ nhân se tơ & nhuộm", "Text": "(Cô xem đống nguyên liệu cháu mang về, gật đầu.) Đủ rồi. Hôm nay cháu muốn nhuộm màu nào?" }
+    ],
+    "Choices": [
+      { "Text": "Màu đỏ.", "Actions": [ "ClearFlag:Color.Red", "ClearFlag:Color.Yellow", "ClearFlag:Color.Blue", "SetFlag:Color.Red", "Progress:Q20.ChooseColor" ], "NextDialogue": "DYER_D4_COLOR_RED" },
+      { "Text": "Màu vàng.", "Actions": [ "ClearFlag:Color.Red", "ClearFlag:Color.Yellow", "ClearFlag:Color.Blue", "SetFlag:Color.Yellow", "Progress:Q20.ChooseColor" ], "NextDialogue": "DYER_D4_COLOR_YELLOW" },
+      { "Text": "Màu xanh.", "Actions": [ "ClearFlag:Color.Red", "ClearFlag:Color.Yellow", "ClearFlag:Color.Blue", "SetFlag:Color.Blue", "Progress:Q20.ChooseColor" ], "NextDialogue": "DYER_D4_COLOR_BLUE" }
+    ],
+    "Actions": []
+  },
+  {
+    "Name": "DYER_D4_COLOR_RED",
+    "Lines": [
+      { "Speaker": "Cô Mai · Nghệ nhân se tơ & nhuộm", "Text": "Màu đỏ – màu của lễ hội và của lửa bếp nhà sàn. Ra nồi nhuộm đi, nhớ chỉnh nhiệt độ cho vừa." }
+    ],
+    "Choices": [],
+    "Actions": [ "SetFlag:Need.NPC_ThreadDyer" ]
+  },
+  {
+    "Name": "DYER_D4_COLOR_YELLOW",
+    "Lines": [
+      { "Speaker": "Cô Mai · Nghệ nhân se tơ & nhuộm", "Text": "Màu vàng như nắng sau mùa gặt. Ra nồi nhuộm đi, nhớ canh thời gian đừng ngâm quá lâu." }
+    ],
+    "Choices": [],
+    "Actions": []
+  },
+  {
+    "Name": "DYER_D4_COLOR_BLUE",
+    "Lines": [
+      { "Speaker": "Cô Mai · Nghệ nhân se tơ & nhuộm", "Text": "Màu xanh này giống màu của những ngọn núi sau cơn mưa. Ra nồi nhuộm đi, đừng cho thuốc nhiều quá nhé." }
+    ],
+    "Choices": [],
+    "Actions": []
+  },
+  {
+    "Name": "DYER_D4_DYE_HINT",
+    "Lines": [
+      { "Speaker": "Cô Mai · Nghệ nhân se tơ & nhuộm", "Text": "Nồi nhuộm ở ngay cạnh nhà. Chỉnh nhiệt độ, lượng thuốc và thời gian: nhiều quá thì sẫm, ít quá thì nhạt." }
+    ],
+    "Choices": [],
+    "Actions": []
+  },
+  {
+    "Name": "DYER_D4_AFTER",
+    "Lines": [
+      { "Speaker": "Cô Mai · Nghệ nhân se tơ & nhuộm", "Text": "Sợi cháu nhuộm khá đấy. Màu nào cũng có câu chuyện của nó – cháu cứ nhớ lấy." }
+    ],
+    "Choices": [],
+    "Actions": []
+  },
+
+  {
+    "Name": "WEAVER_D4_INTRO",
+    "Lines": [
+      { "Speaker": "Cô Lụa · Nghệ nhân dệt & may", "Text": "(Cô nhìn cuộn sợi nhuộm màu trên tay cháu.) Bây giờ mới đến lúc biến những sợi nhỏ bé này thành một tấm vải." },
+      { "Speaker": "Cô Lụa · Nghệ nhân dệt & may", "Text": "(Cô chỉ vào khung dệt.) Hãy thử. Giữ nhịp, đưa thoi, chọn đúng vị trí và đừng để sợi chùng hay căng quá." }
+    ],
+    "Choices": [],
+    "Actions": [ "Progress:Q21.TalkWeaver" ]
+  },
+  {
+    "Name": "WEAVER_D4_HINT",
+    "Lines": [
+      { "Speaker": "Cô Lụa · Nghệ nhân dệt & may", "Text": "Khung dệt đang chờ cháu. Cứ bình tĩnh, đứt sợi cũng nối lại được." }
+    ],
+    "Choices": [],
+    "Actions": []
+  },
+  {
+    "Name": "WEAVER_D4_STORY",
+    "Lines": [
+      { "Speaker": "Cô Lụa · Nghệ nhân dệt & may", "Text": "(Những sợi màu dần kết lại thành một tấm vải. Cô Lụa cầm tấm vải lên, soi dưới nắng.) Cháu biết không… Một tấm vải như thế này từng cần rất nhiều người cùng làm." },
+      { "Speaker": "Cô Lụa · Nghệ nhân dệt & may", "Text": "(Cô chỉ dọc con đường.) Người trồng dâu." },
+      { "Speaker": "Cô Lụa · Nghệ nhân dệt & may", "Text": "Người nuôi tằm. Người ươm tơ. Người se sợi. Người nhuộm." },
+      { "Speaker": "Cô Lụa · Nghệ nhân dệt & may", "Text": "Và cuối cùng là người dệt. Không ai làm ra nó một mình." }
+    ],
+    "Choices": [],
+    "Actions": [
+      "AddCulture:5",
+      "AddRel:NPC_WeaverTailor:5"
+    ]
+  },
+  {
+    "Name": "WEAVER_D4_DONE",
+    "Lines": [
+      { "Speaker": "Cô Lụa · Nghệ nhân dệt & may", "Text": "Tấm vải đầu tiên của cháu đấy. Giữ cho cẩn thận – ngày mai cô sẽ chỉ cháu biến nó thành trang phục. Giờ về báo bà Xuân đi, trời sắp tối." }
+    ],
+    "Choices": [],
+    "Actions": [ "SetFlag:Need.NPC_Chief" ]
+  },
+
+  {
+    "Name": "SILK_D4_IDLE",
+    "Lines": [
+      { "Speaker": "Ông Khánh · Nghệ nhân nuôi tằm", "Text": "Sợi cháu se hôm qua đang được người ta nhuộm màu rồi hả? Tốt, tốt. Chăm tằm khỏe thì mới có sợi đẹp thế." }
+    ],
+    "Choices": [],
+    "Actions": []
+  }
+]

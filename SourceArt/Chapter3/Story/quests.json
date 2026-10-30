@@ -1,0 +1,45 @@
+[
+  {
+    "Name": "Q14",
+    "Title": "Ngày 3 – Sợi tơ đầu tiên",
+    "Objectives": [
+      { "Id": "TalkChief", "Text": "Gặp bà Xuân ở sân lễ hội", "Target": 1, "TrackItem": "None" }
+    ],
+    "OnComplete": []
+  },
+  {
+    "Name": "Q15",
+    "Title": "Quest – Sợi tơ đầu tiên (The First Silk)",
+    "Objectives": [
+      { "Id": "ChooseCocoons", "Text": "Gặp ông Khánh ở nồi ươm tơ, chọn kén tốt (cần ít nhất 5 kén)", "Target": 1, "TrackItem": "None" },
+      { "Id": "ReelSilk", "Text": "Ươm cả mẻ kén thành tơ (tìm đầu sợi, giữ lực kéo, giữ tốc độ)", "Target": 1, "TrackItem": "None" },
+      { "Id": "Feedback", "Text": "Nói chuyện với ông Khánh về mẻ tơ", "Target": 1, "TrackItem": "None" }
+    ],
+    "OnComplete": [
+      "SetFlag:Knowledge.SilkReeling",
+      "Notify:Đã ươm xong mẻ tơ đầu tiên · Kiến thức: Ươm tơ",
+      "StartQuest:Q16",
+      "StartQuest:Q17"
+    ]
+  },
+  {
+    "Name": "Q16",
+    "Title": "Quest – Se tơ (Spin the Silk)",
+    "Objectives": [
+      { "Id": "BringSilk", "Text": "Mang tơ đến gặp cô Mai ở xưởng se tơ (nhà sát bờ suối)", "Target": 1, "TrackItem": "None" },
+      { "Id": "SpinThread", "Text": "Se tơ thành sợi ở guồng cạnh nhà cô Mai", "Target": 1, "TrackItem": "None" }
+    ],
+    "OnComplete": [
+      "SetFlag:Knowledge.SilkSpinning",
+      "Notify:Đã se xong sợi tơ! Vật liệu mới: Sợi tơ · Về sân lễ hội gặp bà Xuân"
+    ]
+  },
+  {
+    "Name": "Q17",
+    "Title": "Kết thúc Ngày 3 – Về sân lễ hội",
+    "Objectives": [
+      { "Id": "ReturnChief", "Text": "Gặp bà Xuân ở sân lễ hội khi xong việc (se tơ còn dở thì làm tiếp, không bị phạt)", "Target": 1, "TrackItem": "None" }
+    ],
+    "OnComplete": []
+  }
+]

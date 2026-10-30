@@ -1,0 +1,82 @@
+[
+  {
+    "Name": "Q00",
+    "Title": "Đến làng Tơ Lụa",
+    "Objectives": [
+      {
+        "Id": "TalkChief",
+        "Text": "Nói chuyện với bà Xuân – Trưởng làng (sân lễ hội)",
+        "Target": 1,
+        "TrackItem": "None"
+      }
+    ],
+    "OnComplete": []
+  },
+  {
+    "Name": "Q01",
+    "Title": "Quest 01 – Khởi đầu của sợi tơ",
+    "Objectives": [
+      {
+        "Id": "MeetSilkMaster",
+        "Text": "Gặp ông Khánh – nghệ nhân nuôi tằm & ươm tơ",
+        "Target": 1,
+        "TrackItem": "None"
+      },
+      {
+        "Id": "MeetThreadDyer",
+        "Text": "Gặp cô Mai – se tơ & nhuộm (khu xưởng – nhà sát bờ suối)",
+        "Target": 1,
+        "TrackItem": "None"
+      },
+      {
+        "Id": "MeetWeaverTailor",
+        "Text": "Gặp cô Lụa – dệt & may (khu xưởng – sau nhà nuôi tằm)",
+        "Target": 1,
+        "TrackItem": "None"
+      }
+    ],
+    "OnComplete": [
+      "Notify:Đã gặp đủ các nghệ nhân trong làng"
+    ]
+  },
+  {
+    "Name": "Q02",
+    "Title": "Nuôi tằm",
+    "Objectives": [
+      {
+        "Id": "CollectLeaves",
+        "Text": "Hái lá dâu ở vườn dâu",
+        "Target": 10,
+        "TrackItem": "MAT_MULBERRY_LEAF_001"
+      },
+      {
+        "Id": "RaiseSilkworms",
+        "Text": "Chăm sóc nong tằm đến khi kết kén",
+        "Target": 1,
+        "TrackItem": "None"
+      },
+      {
+        "Id": "ShowCocoon",
+        "Text": "Mang kén cho ông Khánh xem",
+        "Target": 1,
+        "TrackItem": "None"
+      }
+    ],
+    "OnComplete": [
+      "StartQuest:Q03"
+    ]
+  },
+  {
+    "Name": "Q03",
+    "Title": "Trở về trung tâm làng",
+    "Objectives": [
+      {
+        "Id": "ReturnChief",
+        "Text": "Gặp bà Xuân ở sân lễ hội",
+        "Target": 1,
+        "TrackItem": "None"
+      }
+    ],
+    "OnComplete": []
+  }
+]

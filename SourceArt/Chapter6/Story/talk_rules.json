@@ -1,0 +1,53 @@
+[
+  {
+    "Name": "CHIEF_F_00",
+    "NpcId": "NPC_Chief",
+    "RequireFlags": [
+      "Quest.Q43.Active"
+    ],
+    "BlockFlags": [
+      "Obj.Q43.Select"
+    ],
+    "Dialogue": "CHIEF_F_PHASE_SELECT"
+  },
+  {
+    "Name": "CHIEF_F_01",
+    "NpcId": "NPC_Chief",
+    "RequireFlags": [
+      "Quest.Q43.Active"
+    ],
+    "BlockFlags": [],
+    "Dialogue": "CHIEF_F_PHASE_HINT"
+  },
+  {
+    "Name": "CHIEF_F_02",
+    "NpcId": "NPC_Chief",
+    "RequireFlags": [
+      "Quest.Q42.Active"
+    ],
+    "BlockFlags": [
+      "Obj.Q42.TalkChief"
+    ],
+    "Dialogue": "CHIEF_F_CHALLENGE"
+  },
+  {
+    "Name": "CHIEF_F_03",
+    "NpcId": "NPC_Chief",
+    "RequireFlags": [
+      "Quest.Q41.Active"
+    ],
+    "BlockFlags": [],
+    "Dialogue": "CHIEF_F_HINT"
+  },
+  {
+    "Name": "CHIEF_F_04",
+    "NpcId": "NPC_Chief",
+    "RequireFlags": [
+      "Quest.Q40.Active"
+    ],
+    "BlockFlags": [
+      "Obj.Q40.TalkChief"
+    ],
+    "Dialogue": "CHIEF_F_OPEN"
+  }
+]

@@ -1,0 +1,84 @@
+[
+  {
+    "Name": "Q09",
+    "Title": "Ngày 2 – Những công việc của làng",
+    "Objectives": [
+      {
+        "Id": "TalkChief",
+        "Text": "Gặp bà Xuân ở sân lễ hội",
+        "Target": 1,
+        "TrackItem": "None"
+      }
+    ],
+    "OnComplete": []
+  },
+  {
+    "Name": "Q10",
+    "Title": "Quest 02 – Hoàn tất thu thập kén",
+    "Objectives": [
+      {
+        "Id": "CollectCocoons",
+        "Text": "Thu thập kén tằm cho đủ 50 (số kén hôm qua được giữ nguyên)",
+        "Target": 50,
+        "TrackItem": "MAT_COCOON_001"
+      }
+    ],
+    "OnComplete": [
+      "SetFlag:Knowledge.CocoonCollection",
+      "SetFlag:Unlock.SilkReeling",
+      "SetFlag:Reward.CocoonCollection",
+      "Notify:Thu thập kén hoàn tất! +EXP Nghề tơ · Hiểu biết văn hóa +5 · Thiện cảm ông Khánh +5",
+      "Notify:Đã mở khóa: Ươm tơ (hỏi ông Khánh khi sẵn sàng)",
+      "StartQuestIf:Q13:Quest.Q10.Done,Quest.Q11.Done"
+    ]
+  },
+  {
+    "Name": "Q11",
+    "Title": "Quest 03 – Giúp làng chuẩn bị Lễ hội Tơ Lụa",
+    "Objectives": [
+      { "Id": "Bamboo", "Text": "Thu thập Tre", "Target": 5, "TrackItem": "DEC_BAMBOO_001" },
+      { "Id": "Cloth", "Text": "Thu thập Vải màu", "Target": 5, "TrackItem": "DEC_COLOR_CLOTH_001" },
+      { "Id": "Flower", "Text": "Thu thập Hoa", "Target": 10, "TrackItem": "DEC_FLOWER_001" },
+      { "Id": "Rope", "Text": "Thu thập Dây thừng", "Target": 5, "TrackItem": "DEC_ROPE_001" },
+      { "Id": "WoodDeco", "Text": "Thu thập Đồ trang trí bằng gỗ", "Target": 3, "TrackItem": "DEC_WOOD_ORNAMENT_001" },
+      { "Id": "DecorateGate", "Text": "Trang trí cổng lễ hội (đặt dải vải đúng vị trí)", "Target": 1, "TrackItem": "None" },
+      { "Id": "HangDecorations", "Text": "Treo đèn, vải, hoa và dây trang trí", "Target": 1, "TrackItem": "None" },
+      { "Id": "ArrangeArea", "Text": "Sắp xếp khu vực lễ hội (bàn, ghế, khung dệt, kệ trưng bày)", "Target": 1, "TrackItem": "None" },
+      { "Id": "FinalDecoration", "Text": "Báo bà Xuân để hoàn thiện trang trí lễ hội (100%)", "Target": 1, "TrackItem": "None" }
+    ],
+    "OnComplete": [
+      "SetFlag:Festival.Decorated",
+      "SetFlag:Unlock.FestivalArea",
+      "SetFlag:Reward.FestivalDecoration",
+      "GiveItem:ITM_SILK_BANNER_001:1",
+      "Notify:Hoàn thành trang trí lễ hội! Hiểu biết văn hóa +10 · Thiện cảm dân làng +10 · Đóng góp lễ hội +20",
+      "Notify:Nhận vật phẩm: Cờ lụa truyền thống (dùng ở Chương 6)",
+      "StartQuestIf:Q13:Quest.Q10.Done,Quest.Q11.Done"
+    ]
+  },
+  {
+    "Name": "Q12",
+    "Title": "Quest 04 – Sợi tơ đầu tiên",
+    "Objectives": [
+      { "Id": "FindThread", "Text": "Tìm đầu sợi tơ trong nồi nước nóng", "Target": 1, "TrackItem": "None" },
+      { "Id": "ControlTension", "Text": "Giữ lực kéo trong vùng an toàn", "Target": 1, "TrackItem": "None" },
+      { "Id": "MaintainSpeed", "Text": "Giữ tốc độ kéo ổn định", "Target": 1, "TrackItem": "None" },
+      { "Id": "FinishSilk", "Text": "Hoàn thành sợi tơ đầu tiên", "Target": 1, "TrackItem": "None" }
+    ],
+    "OnComplete": [
+      "GiveItem:MAT_RAW_SILK_001:1",
+      "SetFlag:Knowledge.SilkReeling",
+      "SetFlag:Day2.ReelingDone",
+      "Notify:Sợi tơ đầu tiên đã hoàn thành! Nhận: Tơ thô",
+      "StartQuestIf:Q15:Day3.Started"
+    ]
+  },
+  {
+    "Name": "Q13",
+    "Title": "Kết thúc Ngày 2 – Về sân lễ hội",
+    "Objectives": [
+      { "Id": "ReturnChief", "Text": "Gặp bà Xuân ở sân lễ hội khi xong việc (ươm tơ còn dở thì mai làm tiếp, không bị phạt)", "Target": 1, "TrackItem": "None" }
+    ],
+    "OnComplete": []
+  }
+]

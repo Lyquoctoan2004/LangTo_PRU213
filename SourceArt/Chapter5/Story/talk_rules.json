@@ -1,0 +1,16 @@
+[
+  { "Name": "CHIEF_D5_00", "NpcId": "NPC_Chief", "RequireFlags": [ "Quest.Q28.Active" ], "BlockFlags": [], "Dialogue": "CHIEF_D5_END" },
+  { "Name": "CHIEF_D5_01", "NpcId": "NPC_Chief", "RequireFlags": [ "Quest.Q27.Active" ], "BlockFlags": [ "Obj.Q27.TalkChief" ], "Dialogue": "CHIEF_D5_OUTFIT" },
+  { "Name": "CHIEF_D5_03", "NpcId": "NPC_Chief", "RequireFlags": [ "Quest.Q23.Active" ], "BlockFlags": [], "Dialogue": "CHIEF_D5_MORNING" },
+  { "Name": "CHIEF_D5_02", "NpcId": "NPC_Chief", "RequireFlags": [ "Day5.Started" ], "BlockFlags": [ "Day5.Complete" ], "Dialogue": "CHIEF_D4_HINT" },
+
+  { "Name": "WEAVER_D5_00", "NpcId": "NPC_WeaverTailor", "RequireFlags": [ "Quest.Q23.Active" ], "BlockFlags": [], "Dialogue": "WEAVER_D5_INTRO" },
+  { "Name": "WEAVER_D5_01", "NpcId": "NPC_WeaverTailor", "RequireFlags": [ "Quest.Q24.Active" ], "BlockFlags": [], "Dialogue": "WEAVER_D5_DESIGN" },
+  { "Name": "WEAVER_D5_02", "NpcId": "NPC_WeaverTailor", "RequireFlags": [ "Quest.Q25.Active" ], "BlockFlags": [], "Dialogue": "WEAVER_D5_CUT_HINT" },
+  { "Name": "WEAVER_D5_03", "NpcId": "NPC_WeaverTailor", "RequireFlags": [ "Quest.Q26.Active" ], "BlockFlags": [], "Dialogue": "WEAVER_D5_SEW_HINT" },
+  { "Name": "WEAVER_D5_04", "NpcId": "NPC_WeaverTailor", "RequireFlags": [ "Stories.On" ], "BlockFlags": [ "Story.NPC_WeaverTailor" ], "Dialogue": "STORY_WEAVER" },
+  { "Name": "WEAVER_D5_05", "NpcId": "NPC_WeaverTailor", "RequireFlags": [ "Day5.Started" ], "BlockFlags": [ "Day5.Complete" ], "Dialogue": "WEAVER_D5_AFTER" },
+
+  { "Name": "SILK_D5_00", "NpcId": "NPC_SilkMaster", "RequireFlags": [ "Stories.On" ], "BlockFlags": [ "Story.NPC_SilkMaster" ], "Dialogue": "STORY_SILK" },
+  { "Name": "DYER_D5_00", "NpcId": "NPC_ThreadDyer", "RequireFlags": [ "Stories.On" ], "BlockFlags": [ "Story.NPC_ThreadDyer" ], "Dialogue": "STORY_DYER" }
+]

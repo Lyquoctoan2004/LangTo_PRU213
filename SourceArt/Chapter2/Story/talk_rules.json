@@ -1,0 +1,19 @@
+[
+  { "Name": "CHIEF_D2_END_A", "NpcId": "NPC_Chief", "RequireFlags": [ "Quest.Q13.Active", "Quest.Q12.Done" ], "BlockFlags": [], "Dialogue": "CHIEF_D2_DAY_END" },
+  { "Name": "CHIEF_D2_END_B", "NpcId": "NPC_Chief", "RequireFlags": [ "Quest.Q13.Active" ], "BlockFlags": [], "Dialogue": "CHIEF_D2_REST" },
+  { "Name": "CHIEF_D2_00", "NpcId": "NPC_Chief", "RequireFlags": [ "Obj.Q11.ArrangeArea" ], "BlockFlags": [ "Obj.Q11.FinalDecoration" ], "Dialogue": "CHIEF_D2_FINAL" },
+  { "Name": "CHIEF_D2_01", "NpcId": "NPC_Chief", "RequireFlags": [ "Quest.Q11.Active" ], "BlockFlags": [], "Dialogue": "CHIEF_D2_FESTIVAL_HINT" },
+  { "Name": "CHIEF_D2_02", "NpcId": "NPC_Chief", "RequireFlags": [ "Quest.Q10.Done", "Quest.Q11.Done" ], "BlockFlags": [], "Dialogue": "CHIEF_D2_FREE" },
+  { "Name": "CHIEF_D2_03", "NpcId": "NPC_Chief", "RequireFlags": [ "Quest.Q10.Active" ], "BlockFlags": [], "Dialogue": "CHIEF_D2_COCOON_HINT" },
+  { "Name": "CHIEF_D2_04", "NpcId": "NPC_Chief", "RequireFlags": [ "Quest.Q10.Done" ], "BlockFlags": [ "Quest.Q11.Done" ], "Dialogue": "CHIEF_D2_FESTIVAL_HINT" },
+  { "Name": "CHIEF_D2_05", "NpcId": "NPC_Chief", "RequireFlags": [ "Day1.Complete" ], "BlockFlags": [ "Day2.Started" ], "Dialogue": "CHIEF_D2_MORNING" },
+
+  { "Name": "SILK_D2_01", "NpcId": "NPC_SilkMaster", "RequireFlags": [ "Quest.Q12.Done" ], "BlockFlags": [], "Dialogue": "SILK_D2_AFTER_REELING" },
+  { "Name": "SILK_D2_02", "NpcId": "NPC_SilkMaster", "RequireFlags": [ "Quest.Q12.Active" ], "BlockFlags": [], "Dialogue": "SILK_D2_REELING_HINT" },
+  { "Name": "SILK_D2_03", "NpcId": "NPC_SilkMaster", "RequireFlags": [ "Unlock.SilkReeling" ], "BlockFlags": [], "Dialogue": "SILK_D2_REELING_OFFER" },
+  { "Name": "SILK_D2_04", "NpcId": "NPC_SilkMaster", "RequireFlags": [ "Quest.Q10.Active" ], "BlockFlags": [], "Dialogue": "SILK_D2_COCOON_HINT" },
+  { "Name": "SILK_D2_05", "NpcId": "NPC_SilkMaster", "RequireFlags": [ "Day1.Complete" ], "BlockFlags": [ "Day2.Started" ], "Dialogue": "SILK_D2_MORNING" },
+
+  { "Name": "DYER_D2_01", "NpcId": "NPC_ThreadDyer", "RequireFlags": [ "Day2.Started" ], "BlockFlags": [], "Dialogue": "DYER_D2_BUSY" },
+  { "Name": "WEAVER_D2_01", "NpcId": "NPC_WeaverTailor", "RequireFlags": [ "Day2.Started" ], "BlockFlags": [], "Dialogue": "WEAVER_D2_BUSY" }
+]

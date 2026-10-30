@@ -1,0 +1,15 @@
+[
+  {
+    "Name": "D4",
+    "Title": "NGÀY 4 – HOÀN THÀNH",
+    "Lines": [
+      "Đã hoàn thành: ✓ Tìm nguyên liệu nhuộm · ✓ Học nhuộm · ✓ Sợi tơ nhuộm màu · ✓ Học dệt · ✓ Tấm vải đầu tiên",
+      "Chất lượng: Nhuộm {Stars:Dye}  ·  Dệt {Stars:Weave}",
+      "Mở khóa: Sợi tơ nhuộm màu · Vải lụa · Nhà may · Hệ thống thiết kế trang phục",
+      "Mục tiêu mới: Mang tấm vải đến nhà may và tạo trang phục đầu tiên"
+    ],
+    "SetFlags": [ "SetFlag:Day4.Complete" ],
+    "OnClose": [ "StartQuest:Q23", "SetFlag:Need.NPC_WeaverTailor" ],
+    "Morning": "NGÀY 5 – Từ tấm vải đến trang phục (Chương 5)"
+  }
+]

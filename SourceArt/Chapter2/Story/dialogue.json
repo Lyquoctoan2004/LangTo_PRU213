@@ -1,0 +1,166 @@
+[
+  {
+    "Name": "CHIEF_D2_MORNING",
+    "Lines": [
+      { "Speaker": "Bà Xuân · Trưởng làng", "Text": "(Nắng sớm đã chiếu qua sân lễ hội. Tiếng khung dệt vang lên từ mọi ngả.) Chào cháu, ngày thứ hai rồi đấy." },
+      { "Speaker": "Bà Xuân · Trưởng làng", "Text": "Hôm qua cháu đã biết nuôi tằm. Hôm nay còn hai việc: thu cho đủ năm mươi chiếc kén để ông Khánh ươm tơ, và giúp làng trang trí sân lễ hội." },
+      { "Speaker": "Bà Xuân · Trưởng làng", "Text": "Lễ hội đã gần lắm rồi. Người trong làng ai cũng có việc phải làm. Nếu cháu có thời gian, hãy phụ một tay nhé." },
+      { "Speaker": "Bà Xuân · Trưởng làng", "Text": "Hai việc này cháu làm việc nào trước cũng được. Số kén cháu đã thu hôm qua vẫn còn đó, cháu chỉ cần thu nốt phần còn thiếu." }
+    ],
+    "Choices": [],
+    "Actions": [
+      "Progress:Q09.TalkChief",
+      "SetFlag:Day2.Started",
+      "StartQuest:Q10",
+      "StartQuest:Q11"
+    ]
+  },
+  {
+    "Name": "CHIEF_D2_COCOON_HINT",
+    "Lines": [
+      { "Speaker": "Bà Xuân · Trưởng làng", "Text": "Kén tằm thì cháu ra nhà nuôi tằm của ông Khánh mà thu. Khay nào đã kết kén xong thì hái, nhớ chọn đúng lúc – hái sớm quá kén chưa đẹp, muộn quá thì kén xấu đi." },
+      { "Speaker": "Bà Xuân · Trưởng làng", "Text": "Còn nếu cháu muốn nghỉ tay một chút, sân lễ hội đang cần người trang trí đấy." }
+    ],
+    "Choices": [],
+    "Actions": []
+  },
+  {
+    "Name": "CHIEF_D2_FESTIVAL_HINT",
+    "Lines": [
+      { "Speaker": "Bà Xuân · Trưởng làng", "Text": "Sân lễ hội còn khá trống: cổng chưa xong, dây vải với đèn chưa treo, bàn ghế chưa kê, sân khấu cũng chưa hoàn thiện." },
+      { "Speaker": "Bà Xuân · Trưởng làng", "Text": "Cháu đi quanh làng gom tre, vải màu, hoa, dây thừng và đồ gỗ trang trí. Đủ rồi thì quay lại đây, bà chỉ chỗ cho cháu đặt." },
+      { "Speaker": "Bà Xuân · Trưởng làng", "Text": "(Bà chỉ lên cổng.) Dải vải này đặt lên cổng đấy. Đặt sai cũng không sao, cháu cứ tháo ra đặt lại." }
+    ],
+    "Choices": [],
+    "Actions": []
+  },
+  {
+    "Name": "CHIEF_D2_FINAL",
+    "Lines": [
+      { "Speaker": "Bà Xuân · Trưởng làng", "Text": "(Dân làng đang treo nốt những món cuối cùng. Cháu đứng giữa sân lễ hội, nhìn khắp một lượt.)" },
+      { "Speaker": "Bà Xuân · Trưởng làng", "Text": "Đẹp rồi đấy! Nhờ có mọi người mà lễ hội năm nay chắc chắn sẽ rất đặc biệt." },
+      { "Speaker": "Bà Xuân · Trưởng làng", "Text": "Cái cờ lụa này bà tặng cháu. Cháu giữ lấy, sau này còn dùng đến." }
+    ],
+    "Choices": [],
+    "Actions": [
+      "Progress:Q11.FinalDecoration"
+    ]
+  },
+  {
+    "Name": "CHIEF_D2_FREE",
+    "Lines": [
+      { "Speaker": "Bà Xuân · Trưởng làng", "Text": "Hôm nay cháu làm được nhiều việc quá. Không còn việc gì gấp nữa đâu, cháu cứ đi quanh làng cho biết." },
+      { "Speaker": "Bà Xuân · Trưởng làng", "Text": "Nói chuyện với bà con, nghe họ kể về nghề, giúp ai đó một tay nếu gặp. Biết đâu cháu sẽ tìm ra điều bất ngờ." }
+    ],
+    "Choices": [],
+    "Actions": []
+  },
+
+  {
+    "Name": "CHIEF_D2_DAY_END",
+    "Lines": [
+      { "Speaker": "Bà Xuân · Trưởng làng", "Text": "(Mặt trời bắt đầu lặn. Cờ vải và đèn lồng đã lên hết, tiếng khung dệt vẫn vang từng nhịp.) Hôm nay cháu làm được nhiều việc quá." },
+      { "Speaker": "Bà Xuân · Trưởng làng", "Text": "Kén đã đủ năm mươi, sân lễ hội đã có hồn, lại còn kéo được sợi tơ đầu tiên. Ông Khánh khen cháu mãi đấy." },
+      { "Speaker": "Bà Xuân · Trưởng làng", "Text": "Ngày mai cháu sẽ ươm cả mẻ kén thành tơ, rồi se tơ thành sợi. Nghỉ ngơi cho khỏe nhé." }
+    ],
+    "Choices": [],
+    "Actions": [
+      "Progress:Q13.ReturnChief",
+      "EndDay:2"
+    ]
+  },
+  {
+    "Name": "CHIEF_D2_REST",
+    "Lines": [
+      { "Speaker": "Bà Xuân · Trưởng làng", "Text": "(Trời đã về chiều.) Hai việc lớn hôm nay cháu xong cả rồi. Chỉ còn sợi tơ đầu tiên ở chỗ ông Khánh là còn dở." },
+      { "Speaker": "Bà Xuân · Trưởng làng", "Text": "Cháu muốn làm nốt cho xong, hay nghỉ một chút? Không ai phạt cháu đâu – sáng mai làm tiếp cũng được." }
+    ],
+    "Choices": [
+      { "Text": "Cháu muốn ươm tơ cho xong đã ạ.", "Actions": [], "NextDialogue": "None" },
+      { "Text": "Cháu xin nghỉ, mai cháu làm tiếp.", "Actions": [ "Progress:Q13.ReturnChief", "EndDay:2" ], "NextDialogue": "None" }
+    ],
+    "Actions": []
+  },
+
+  {
+    "Name": "SILK_D2_MORNING",
+    "Lines": [
+      { "Speaker": "Ông Khánh · Nghệ nhân nuôi tằm", "Text": "Dậy sớm đấy. Trước tiên cháu sang sân lễ hội gặp bà Xuân đã, bà ấy có việc giao." }
+    ],
+    "Choices": [],
+    "Actions": []
+  },
+  {
+    "Name": "SILK_D2_COCOON_HINT",
+    "Lines": [
+      { "Speaker": "Ông Khánh · Nghệ nhân nuôi tằm", "Text": "Mấy khay nào kén đã đóng xong thì cháu hái. Ta nói trước: hái non thì kén xấu, để già thì kén cũng xấu. Phải nhìn cho đúng lúc." },
+      { "Speaker": "Ông Khánh · Nghệ nhân nuôi tằm", "Text": "Kén tốt thì tơ mới tốt. Chất lượng kén hôm nay sẽ theo cháu đến tận lúc dệt đấy." }
+    ],
+    "Choices": [],
+    "Actions": []
+  },
+  {
+    "Name": "SILK_D2_REELING_OFFER",
+    "Lines": [
+      { "Speaker": "Ông Khánh · Nghệ nhân nuôi tằm", "Text": "(Ông đếm lại số kén trong rổ, gật đầu.) Chúng ta đã có đủ kén." },
+      { "Speaker": "Ông Khánh · Nghệ nhân nuôi tằm", "Text": "Nhưng kén mới chỉ là điểm bắt đầu. Bây giờ, hãy xem cháu có lấy được sợi tơ đầu tiên hay không." }
+    ],
+    "Choices": [
+      {
+        "Text": "Cháu sẵn sàng ạ.",
+        "Actions": [ "StartQuest:Q12" ],
+        "NextDialogue": "SILK_D2_REELING_START"
+      },
+      {
+        "Text": "Cháu xin phép làm sau ạ.",
+        "Actions": [],
+        "NextDialogue": "None"
+      }
+    ],
+    "Actions": []
+  },
+  {
+    "Name": "SILK_D2_REELING_START",
+    "Lines": [
+      { "Speaker": "Ông Khánh · Nghệ nhân nuôi tằm", "Text": "Kén ngâm trong nồi nước nóng cho mềm, rồi mới tìm được đầu sợi. Tay phải nhẹ, mắt phải tinh." },
+      { "Speaker": "Ông Khánh · Nghệ nhân nuôi tằm", "Text": "Kéo chậm quá thì sợi chùng, kéo mạnh quá thì sợi đứt. Giữ đều tay là được. Đứt thì nối lại, chẳng ai mắng cháu đâu – chỉ là tơ sẽ kém đi một chút." }
+    ],
+    "Choices": [],
+    "Actions": []
+  },
+  {
+    "Name": "SILK_D2_REELING_HINT",
+    "Lines": [
+      { "Speaker": "Ông Khánh · Nghệ nhân nuôi tằm", "Text": "Tìm đầu sợi trước, rồi giữ lực kéo và giữ tốc độ cho đều. Đứt sợi thì nối lại, đừng vội." }
+    ],
+    "Choices": [],
+    "Actions": []
+  },
+  {
+    "Name": "SILK_D2_AFTER_REELING",
+    "Lines": [
+      { "Speaker": "Ông Khánh · Nghệ nhân nuôi tằm", "Text": "(Ông cầm sợi tơ lên soi dưới nắng.) Sợi đầu tiên của cháu đấy. Chưa đẹp lắm, nhưng là của cháu." },
+      { "Speaker": "Ông Khánh · Nghệ nhân nuôi tằm", "Text": "Từ sợi tơ này, bước sau là se thành sợi. Cô Mai ở xưởng suối sẽ dạy cháu." },
+      { "Speaker": "Ông Khánh · Nghệ nhân nuôi tằm", "Text": "Xong việc hôm nay rồi thì về sân lễ hội báo bà Xuân. Trời sắp tối rồi." }
+    ],
+    "Choices": [],
+    "Actions": []
+  },
+
+  {
+    "Name": "DYER_D2_BUSY",
+    "Lines": [
+      { "Speaker": "Cô Mai · Nghệ nhân se tơ & nhuộm", "Text": "Hôm nay cô đang bận chuẩn bị màu cho lễ hội. Cháu hoàn thành phần tơ ở chỗ ông Khánh trước đã, rồi mới đến lượt cô." }
+    ],
+    "Choices": [],
+    "Actions": []
+  },
+  {
+    "Name": "WEAVER_D2_BUSY",
+    "Lines": [
+      { "Speaker": "Cô Lụa · Nghệ nhân dệt & may", "Text": "Khung dệt của cô còn đang dở cho kịp lễ hội. Cháu cứ giúp bà con trang trí sân đi, đến lượt cô sẽ gọi." }
+    ],
+    "Choices": [],
+    "Actions": []
+  }
+]

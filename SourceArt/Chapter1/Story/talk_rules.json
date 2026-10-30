@@ -1,0 +1,23 @@
+[
+  { "Name": "CHIEF_01", "NpcId": "NPC_Chief", "RequireFlags": [ "Quest.Q03.Active", "Quest.Q01.Done" ], "BlockFlags": [], "Dialogue": "CHIEF_DAY_END" },
+  { "Name": "CHIEF_02", "NpcId": "NPC_Chief", "RequireFlags": [ "Quest.Q03.Active" ], "BlockFlags": [], "Dialogue": "CHIEF_NOT_ALL_MET" },
+  { "Name": "CHIEF_03", "NpcId": "NPC_Chief", "RequireFlags": [ "Day1.Complete" ], "BlockFlags": [], "Dialogue": "CHIEF_AFTER_DAY" },
+  { "Name": "CHIEF_04", "NpcId": "NPC_Chief", "RequireFlags": [], "BlockFlags": [ "Quest.Q00.Done" ], "Dialogue": "CHIEF_INTRO" },
+  { "Name": "CHIEF_05", "NpcId": "NPC_Chief", "RequireFlags": [ "Quest.Q02.Active" ], "BlockFlags": [], "Dialogue": "CHIEF_HINT_SILK" },
+  { "Name": "CHIEF_06", "NpcId": "NPC_Chief", "RequireFlags": [], "BlockFlags": [], "Dialogue": "CHIEF_IDLE" },
+
+  { "Name": "SILK_01", "NpcId": "NPC_SilkMaster", "RequireFlags": [], "BlockFlags": [ "Quest.Q00.Done" ], "Dialogue": "SILK_BEFORE_CHIEF" },
+  { "Name": "SILK_02", "NpcId": "NPC_SilkMaster", "RequireFlags": [ "Quest.Q01.Active" ], "BlockFlags": [ "Obj.Q01.MeetSilkMaster" ], "Dialogue": "SILK_INTRO" },
+  { "Name": "SILK_03", "NpcId": "NPC_SilkMaster", "RequireFlags": [ "Obj.Q02.RaiseSilkworms" ], "BlockFlags": [ "Obj.Q02.ShowCocoon" ], "Dialogue": "SILK_DISCOVERY" },
+  { "Name": "SILK_04", "NpcId": "NPC_SilkMaster", "RequireFlags": [ "Quest.Q02.Active" ], "BlockFlags": [ "Obj.Q02.CollectLeaves" ], "Dialogue": "SILK_HINT_LEAVES" },
+  { "Name": "SILK_05", "NpcId": "NPC_SilkMaster", "RequireFlags": [ "Quest.Q02.Active" ], "BlockFlags": [], "Dialogue": "SILK_HINT_TRAY" },
+  { "Name": "SILK_06", "NpcId": "NPC_SilkMaster", "RequireFlags": [], "BlockFlags": [], "Dialogue": "SILK_IDLE" },
+
+  { "Name": "DYER_01", "NpcId": "NPC_ThreadDyer", "RequireFlags": [], "BlockFlags": [ "Quest.Q00.Done" ], "Dialogue": "DYER_BEFORE_CHIEF" },
+  { "Name": "DYER_02", "NpcId": "NPC_ThreadDyer", "RequireFlags": [ "Quest.Q01.Active" ], "BlockFlags": [ "Obj.Q01.MeetThreadDyer" ], "Dialogue": "DYER_INTRO" },
+  { "Name": "DYER_03", "NpcId": "NPC_ThreadDyer", "RequireFlags": [], "BlockFlags": [], "Dialogue": "DYER_IDLE" },
+
+  { "Name": "WEAVER_01", "NpcId": "NPC_WeaverTailor", "RequireFlags": [], "BlockFlags": [ "Quest.Q00.Done" ], "Dialogue": "WEAVER_BEFORE_CHIEF" },
+  { "Name": "WEAVER_02", "NpcId": "NPC_WeaverTailor", "RequireFlags": [ "Quest.Q01.Active" ], "BlockFlags": [ "Obj.Q01.MeetWeaverTailor" ], "Dialogue": "WEAVER_INTRO" },
+  { "Name": "WEAVER_03", "NpcId": "NPC_WeaverTailor", "RequireFlags": [], "BlockFlags": [], "Dialogue": "WEAVER_IDLE" }
+]

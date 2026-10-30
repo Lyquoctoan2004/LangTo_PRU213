@@ -1,0 +1,287 @@
+[
+  {
+    "Name": "ChDye",
+    "Title": "Bàn nhuộm – Festival Red",
+    "Hint": "PHASE 2: tạo đúng màu Đỏ lễ hội – giữ cả ba thanh trong vùng xanh. W/S chọn thanh, A/D chỉnh.  ·  [Esc] rời đi",
+    "RequireFlags": [
+      "Quest.Q43.Active",
+      "Obj.Q43.Select"
+    ],
+    "BlockFlags": [
+      "Obj.Q43.Dye"
+    ],
+    "TakeItems": [],
+    "Rounds": [
+      {
+        "Label": "Nhiệt độ",
+        "Centre": -1,
+        "GoodHalf": 0.115,
+        "PerfectHalf": 0.045,
+        "Speed": 0.9,
+        "TooLow": "Thấp quá – màu đỏ không đủ sâu",
+        "TooHigh": "Cao quá – đỏ bị sẫm cháy"
+      },
+      {
+        "Label": "Lượng thuốc nhuộm",
+        "Centre": -1,
+        "GoodHalf": 0.115,
+        "PerfectHalf": 0.045,
+        "Speed": 0.9500000000000001,
+        "TooLow": "Thấp quá – màu đỏ không đủ sâu",
+        "TooHigh": "Cao quá – đỏ bị sẫm cháy"
+      },
+      {
+        "Label": "Thời gian ngâm",
+        "Centre": -1,
+        "GoodHalf": 0.115,
+        "PerfectHalf": 0.045,
+        "Speed": 1.0,
+        "TooLow": "Thấp quá – màu đỏ không đủ sâu",
+        "TooHigh": "Cao quá – đỏ bị sẫm cháy"
+      }
+    ],
+    "Skill": "Dye",
+    "SlotCost": 0,
+    "FailBelow": 0,
+    "ResultText": "FESTIVAL RED · Chất lượng {0} ({1}/100)",
+    "OnDone": [
+      "Progress:Q43.Dye"
+    ],
+    "OnFail": [],
+    "Mode": "Slider"
+  },
+  {
+    "Name": "ChWeave",
+    "Title": "Khung dệt sân khấu",
+    "Hint": "PHASE 3: dệt theo nhịp – bấm đúng phím đang sáng (W A S D hoặc phím mũi tên) trước khi hết giờ.  ·  [Esc] rời đi",
+    "RequireFlags": [
+      "Quest.Q43.Active",
+      "Obj.Q43.Dye"
+    ],
+    "BlockFlags": [
+      "Obj.Q43.Weave"
+    ],
+    "TakeItems": [],
+    "Rounds": [
+      {
+        "Label": "Nhịp 1 – giữ độ căng",
+        "Centre": -1,
+        "GoodHalf": 0.105,
+        "PerfectHalf": 0.04,
+        "Speed": 1.0,
+        "TooLow": "Sợi chùng – Thread Break",
+        "TooHigh": "Căng quá – Fabric Damage"
+      },
+      {
+        "Label": "Nhịp 2 – giữ độ căng",
+        "Centre": -1,
+        "GoodHalf": 0.105,
+        "PerfectHalf": 0.04,
+        "Speed": 1.04,
+        "TooLow": "Sợi chùng – Thread Break",
+        "TooHigh": "Căng quá – Fabric Damage"
+      },
+      {
+        "Label": "Nhịp 3 – giữ độ căng",
+        "Centre": -1,
+        "GoodHalf": 0.105,
+        "PerfectHalf": 0.04,
+        "Speed": 1.08,
+        "TooLow": "Sợi chùng – Thread Break",
+        "TooHigh": "Căng quá – Fabric Damage"
+      },
+      {
+        "Label": "Nhịp 4 – giữ độ căng",
+        "Centre": -1,
+        "GoodHalf": 0.105,
+        "PerfectHalf": 0.04,
+        "Speed": 1.12,
+        "TooLow": "Sợi chùng – Thread Break",
+        "TooHigh": "Căng quá – Fabric Damage"
+      },
+      {
+        "Label": "Nhịp 5 – giữ độ căng",
+        "Centre": -1,
+        "GoodHalf": 0.105,
+        "PerfectHalf": 0.04,
+        "Speed": 1.16,
+        "TooLow": "Sợi chùng – Thread Break",
+        "TooHigh": "Căng quá – Fabric Damage"
+      },
+      {
+        "Label": "Nhịp 6 – giữ độ căng",
+        "Centre": -1,
+        "GoodHalf": 0.105,
+        "PerfectHalf": 0.04,
+        "Speed": 1.2,
+        "TooLow": "Sợi chùng – Thread Break",
+        "TooHigh": "Căng quá – Fabric Damage"
+      },
+      {
+        "Label": "Nhịp 7 – giữ độ căng",
+        "Centre": -1,
+        "GoodHalf": 0.105,
+        "PerfectHalf": 0.04,
+        "Speed": 1.24,
+        "TooLow": "Sợi chùng – Thread Break",
+        "TooHigh": "Căng quá – Fabric Damage"
+      },
+      {
+        "Label": "Nhịp 8 – giữ độ căng",
+        "Centre": -1,
+        "GoodHalf": 0.105,
+        "PerfectHalf": 0.04,
+        "Speed": 1.28,
+        "TooLow": "Sợi chùng – Thread Break",
+        "TooHigh": "Căng quá – Fabric Damage"
+      }
+    ],
+    "Skill": "Weave",
+    "SlotCost": 0,
+    "FailBelow": 0,
+    "ResultText": "DỆT HOÀN HẢO · Chất lượng {0} ({1}/100)",
+    "OnDone": [
+      "Progress:Q43.Weave"
+    ],
+    "OnFail": [],
+    "Mode": "Sequence"
+  },
+  {
+    "Name": "ChTailor",
+    "Title": "Bàn may sân khấu",
+    "Hint": "PHASE 4: cắt theo mẫu – di chuột (hoặc giữ W/S) để kéo bám theo đường cắt.  ·  [Esc] rời đi",
+    "RequireFlags": [
+      "Quest.Q43.Active",
+      "Obj.Q43.Weave"
+    ],
+    "BlockFlags": [
+      "Obj.Q43.Tailor"
+    ],
+    "TakeItems": [],
+    "Rounds": [
+      {
+        "Label": "Cắt",
+        "Centre": -1,
+        "GoodHalf": 0.115,
+        "PerfectHalf": 0.045,
+        "Speed": 0.95,
+        "TooLow": "Làm vội – lỗi nhỏ",
+        "TooHigh": "Làm chậm – lỗi nhỏ"
+      },
+      {
+        "Label": "May",
+        "Centre": -1,
+        "GoodHalf": 0.115,
+        "PerfectHalf": 0.045,
+        "Speed": 1.0,
+        "TooLow": "Làm vội – lỗi nhỏ",
+        "TooHigh": "Làm chậm – lỗi nhỏ"
+      },
+      {
+        "Label": "Hoa văn",
+        "Centre": -1,
+        "GoodHalf": 0.115,
+        "PerfectHalf": 0.045,
+        "Speed": 1.05,
+        "TooLow": "Làm vội – lỗi nhỏ",
+        "TooHigh": "Làm chậm – lỗi nhỏ"
+      },
+      {
+        "Label": "Phụ kiện",
+        "Centre": -1,
+        "GoodHalf": 0.115,
+        "PerfectHalf": 0.045,
+        "Speed": 1.1,
+        "TooLow": "Làm vội – lỗi nhỏ",
+        "TooHigh": "Làm chậm – lỗi nhỏ"
+      },
+      {
+        "Label": "Kiểm tra cuối",
+        "Centre": -1,
+        "GoodHalf": 0.115,
+        "PerfectHalf": 0.045,
+        "Speed": 1.15,
+        "TooLow": "Làm vội – lỗi nhỏ",
+        "TooHigh": "Làm chậm – lỗi nhỏ"
+      }
+    ],
+    "Skill": "Tailor",
+    "SlotCost": 0,
+    "FailBelow": 0,
+    "ResultText": "TRANG PHỤC CUỐI CÙNG · Chất lượng {0} ({1}/100)",
+    "OnDone": [
+      "Progress:Q43.Tailor"
+    ],
+    "OnFail": [],
+    "Mode": "Trace"
+  },
+  {
+    "Name": "ChStage",
+    "Title": "Sàn diễn – Festival Performance",
+    "Hint": "PHASE 5: trình diễn – bấm A S W D (hoặc phím mũi tên) khi nốt chạm vạch vàng.  ·  [Esc] rời đi",
+    "RequireFlags": [
+      "Quest.Q43.Active",
+      "Obj.Q43.Tailor"
+    ],
+    "BlockFlags": [
+      "Obj.Q43.Perform"
+    ],
+    "TakeItems": [],
+    "Rounds": [
+      {
+        "Label": "Đi bước",
+        "Centre": -1,
+        "GoodHalf": 0.14,
+        "PerfectHalf": 0.05,
+        "Speed": 0.85,
+        "TooLow": "Lệch nhịp – hơi sớm",
+        "TooHigh": "Lệch nhịp – hơi muộn"
+      },
+      {
+        "Label": "Xoay người",
+        "Centre": -1,
+        "GoodHalf": 0.14,
+        "PerfectHalf": 0.05,
+        "Speed": 0.9,
+        "TooLow": "Lệch nhịp – hơi sớm",
+        "TooHigh": "Lệch nhịp – hơi muộn"
+      },
+      {
+        "Label": "Tạo dáng",
+        "Centre": -1,
+        "GoodHalf": 0.14,
+        "PerfectHalf": 0.05,
+        "Speed": 0.95,
+        "TooLow": "Lệch nhịp – hơi sớm",
+        "TooHigh": "Lệch nhịp – hơi muộn"
+      },
+      {
+        "Label": "Giới thiệu hoa văn",
+        "Centre": -1,
+        "GoodHalf": 0.14,
+        "PerfectHalf": 0.05,
+        "Speed": 1.0,
+        "TooLow": "Lệch nhịp – hơi sớm",
+        "TooHigh": "Lệch nhịp – hơi muộn"
+      },
+      {
+        "Label": "Tạo dáng cuối",
+        "Centre": -1,
+        "GoodHalf": 0.14,
+        "PerfectHalf": 0.05,
+        "Speed": 1.05,
+        "TooLow": "Lệch nhịp – hơi sớm",
+        "TooHigh": "Lệch nhịp – hơi muộn"
+      }
+    ],
+    "Skill": "Tailor",
+    "SlotCost": 0,
+    "FailBelow": 0,
+    "ResultText": "TRÌNH DIỄN XONG · Chất lượng {0} ({1}/100)",
+    "OnDone": [
+      "Progress:Q43.Perform"
+    ],
+    "OnFail": [],
+    "Mode": "Lanes"
+  }
+]

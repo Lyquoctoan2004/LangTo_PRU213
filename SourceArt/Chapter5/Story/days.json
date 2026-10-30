@@ -1,0 +1,19 @@
+[
+  {
+    "Name": "D5",
+    "Title": "NGÀY 5 – HOÀN THÀNH",
+        "Lines": [
+      "BẠN ĐÃ TẠO RA BỘ TRANG PHỤC ĐẦU TIÊN.",
+      "Chất lượng: Cắt {Stars:Cut}  ·  May {Stars:Sew}",
+      "Mở khóa: Thiết kế trang phục · May · Tuỳ chỉnh trang phục · Chất lượng trang phục · Hiểu biết văn hóa ({Culture})",
+      "TOMORROW – THE SILK FESTIVAL: ngày mai là Lễ hội Tơ Lụa"
+    ],
+    "SetFlags": [ "SetFlag:Day5.Complete" ],
+    "OnClose": [
+      "SetFlag:Festival.Day",
+      "StartQuest:Q40",
+      "SetFlag:Need.NPC_Chief"
+    ],
+    "Morning": "06:00 – NGÀY HỘI TƠ LỤA · Làng hoàn toàn thay đổi. Hãy gặp bà Xuân ở quảng trường"
+  }
+]

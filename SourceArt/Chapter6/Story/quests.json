@@ -1,0 +1,99 @@
+[
+  {
+    "Name": "Q40",
+    "Title": "Ngày hội Tơ Lụa",
+    "Objectives": [
+      {
+        "Id": "TalkChief",
+        "Text": "Gặp bà Xuân ở quảng trường lễ hội",
+        "Target": 1,
+        "TrackItem": "None"
+      }
+    ],
+    "OnComplete": []
+  },
+  {
+    "Name": "Q41",
+    "Title": "Dạo quanh lễ hội",
+    "Objectives": [
+      {
+        "Id": "Market",
+        "Text": "Xem Chợ lụa (Silk Market)",
+        "Target": 1,
+        "TrackItem": "None"
+      },
+      {
+        "Id": "Crafting",
+        "Text": "Xem Khu nghệ nhân (Crafting Area)",
+        "Target": 1,
+        "TrackItem": "None"
+      },
+      {
+        "Id": "Cultural",
+        "Text": "Xem Khu văn hóa (Cultural Area)",
+        "Target": 1,
+        "TrackItem": "None"
+      }
+    ],
+    "OnComplete": [
+      "AddCulture:8",
+      "SetFlag:Need.NPC_Chief",
+      "Notify:Lễ hội sắp đến phần cuối – hãy gặp bà Xuân",
+      "StartQuest:Q42"
+    ]
+  },
+  {
+    "Name": "Q42",
+    "Title": "Thử thách cuối cùng",
+    "Objectives": [
+      {
+        "Id": "TalkChief",
+        "Text": "Gặp bà Xuân để nhận Thử thách Tơ Lụa",
+        "Target": 1,
+        "TrackItem": "None"
+      }
+    ],
+    "OnComplete": [
+      "StartQuest:Q43"
+    ]
+  },
+  {
+    "Name": "Q43",
+    "Title": "THỬ THÁCH TƠ LỤA – The Master's Challenge",
+    "Objectives": [
+      {
+        "Id": "Select",
+        "Text": "Phase 1 – Chọn nguyên liệu (nói chuyện với bà Xuân)",
+        "Target": 1,
+        "TrackItem": "None"
+      },
+      {
+        "Id": "Dye",
+        "Text": "Phase 2 – Nhuộm đúng màu Đỏ lễ hội (bàn nhuộm ở sân khấu)",
+        "Target": 1,
+        "TrackItem": "None"
+      },
+      {
+        "Id": "Weave",
+        "Text": "Phase 3 – Dệt hoàn hảo (khung dệt ở sân khấu)",
+        "Target": 1,
+        "TrackItem": "None"
+      },
+      {
+        "Id": "Tailor",
+        "Text": "Phase 4 – May trang phục cuối cùng (bàn may ở sân khấu)",
+        "Target": 1,
+        "TrackItem": "None"
+      },
+      {
+        "Id": "Perform",
+        "Text": "Phase 5 – Trình diễn trên sân khấu",
+        "Target": 1,
+        "TrackItem": "None"
+      }
+    ],
+    "OnComplete": [
+      "FinalScore"
+    ]
+  }
+]

@@ -1,0 +1,67 @@
+[
+  {
+    "Name": "Q23",
+    "Title": "Ngày 5 – Từ tấm vải đến trang phục",
+    "Objectives": [
+      { "Id": "TalkTailor", "Text": "Mang tấm vải đầu tiên đến nhà may, gặp cô Lụa", "Target": 1, "TrackItem": "None" }
+    ],
+    "OnComplete": [ "StartQuest:Q24" ]
+  },
+  {
+    "Name": "Q24",
+    "Title": "Quest – Thiết kế trang phục đầu tiên (The First Outfit)",
+    "Objectives": [
+      { "Id": "Design", "Text": "Chọn kiểu dáng, chất liệu, màu sắc, hoa văn và phụ kiện cùng cô Lụa", "Target": 1, "TrackItem": "None" }
+    ],
+    "OnComplete": [
+      "SetFlag:Out.Designed",
+      "Notify:Thiết kế đã được lưu · Hãy cắt vải theo mẫu ở bàn cắt",
+      "StartQuest:Q25"
+    ]
+  },
+  {
+    "Name": "Q25",
+    "Title": "Quest – Cắt vải",
+    "Objectives": [
+      { "Id": "Cut", "Text": "Cắt vải theo đường mẫu ở bàn cắt (nhà may)", "Target": 1, "TrackItem": "None" }
+    ],
+    "OnComplete": [
+      "Notify:Cắt vải xong · Bây giờ đến công đoạn may",
+      "StartQuest:Q26"
+    ]
+  },
+  {
+    "Name": "Q26",
+    "Title": "Quest – May trang phục",
+    "Objectives": [
+      { "Id": "Sew", "Text": "May trang phục ở khung may (giữ đúng nhịp mũi kim)", "Target": 1, "TrackItem": "None" }
+    ],
+    "OnComplete": [
+      "SetFlag:Knowledge.Tailoring",
+      "SetFlag:Unlock.OutfitCustomization",
+      "SetFlag:Need.NPC_Chief",
+      "Notify:TRANG PHỤC ĐẦU TIÊN ĐÃ HOÀN THÀNH · Mở khóa: May · Thiết kế · Chất lượng trang phục",
+      "StartQuest:Q27"
+    ]
+  },
+  {
+    "Name": "Q27",
+    "Title": "Quest – Chuẩn bị cho Lễ hội (Prepare for the Festival)",
+    "Objectives": [
+      { "Id": "TalkChief", "Text": "Gặp bà Xuân ở nhà may và đi xem làng chuẩn bị lễ hội", "Target": 1, "TrackItem": "None" }
+    ],
+    "OnComplete": [
+      "SetFlag:Stories.On",
+      "Notify:Nhiệm vụ phụ mở: Câu chuyện của các nghệ nhân (nói chuyện để hiểu thêm về nghề)",
+      "StartQuest:Q28"
+    ]
+  },
+  {
+    "Name": "Q28",
+    "Title": "Kết thúc Ngày 5 – Về sân lễ hội",
+    "Objectives": [
+      { "Id": "ReturnChief", "Text": "Gặp bà Xuân khi xong việc (có thể nghe chuyện các nghệ nhân trước)", "Target": 1, "TrackItem": "None" }
+    ],
+    "OnComplete": []
+  }
+]

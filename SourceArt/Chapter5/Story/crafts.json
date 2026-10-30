@@ -1,0 +1,157 @@
+[
+    {
+        "Name":  "Cut",
+        "Title":  "Bàn cắt vải",
+        "Hint":  "Cắt theo đường mẫu: kéo tự đi qua tấm vải, di chuột (hoặc giữ W/S) để bám đúng đường cắt. Lệch là hao vải.  ·  [Esc] rời đi",
+        "RequireFlags":  [
+                             "Quest.Q25.Active"
+                         ],
+        "BlockFlags":  [
+                           "Obj.Q25.Cut"
+                       ],
+        "TakeItems":  [
+
+                      ],
+        "Rounds":  [
+                       {
+                           "Label":  "Đường cắt vai",
+                           "Centre":  -1,
+                           "GoodHalf":  0.12,
+                           "PerfectHalf":  0.04,
+                           "Speed":  0.85,
+                           "TooLow":  "Kéo lệch vào trong – hao vải",
+                           "TooHigh":  "Kéo lệch ra ngoài – hao vải"
+                       },
+                       {
+                           "Label":  "Đường cắt thân",
+                           "Centre":  -1,
+                           "GoodHalf":  0.12,
+                           "PerfectHalf":  0.04,
+                           "Speed":  0.9,
+                           "TooLow":  "Kéo lệch vào trong – hao vải",
+                           "TooHigh":  "Kéo lệch ra ngoài – hao vải"
+                       },
+                       {
+                           "Label":  "Đường cắt tay",
+                           "Centre":  -1,
+                           "GoodHalf":  0.11,
+                           "PerfectHalf":  0.04,
+                           "Speed":  0.95,
+                           "TooLow":  "Kéo lệch vào trong – hao vải",
+                           "TooHigh":  "Kéo lệch ra ngoài – hao vải"
+                       },
+                       {
+                           "Label":  "Đường cong cổ áo",
+                           "Centre":  -1,
+                           "GoodHalf":  0.11,
+                           "PerfectHalf":  0.04,
+                           "Speed":  1.0,
+                           "TooLow":  "Cắt quá sâu",
+                           "TooHigh":  "Cắt quá nông"
+                       },
+                       {
+                           "Label":  "Đường cắt gấu",
+                           "Centre":  -1,
+                           "GoodHalf":  0.11,
+                           "PerfectHalf":  0.04,
+                           "Speed":  1.0,
+                           "TooLow":  "Kéo lệch vào trong – hao vải",
+                           "TooHigh":  "Kéo lệch ra ngoài – hao vải"
+                       }
+                   ],
+        "Skill":  "Tailor",
+        "SlotCost":  0,
+        "FailBelow":  0,
+        "ResultText":  "CẮT VẢI XONG · Chất lượng đường cắt {0} ({1}/100)",
+        "OnDone":  [
+                       "Progress:Q25.Cut"
+                   ],
+        "OnFail":  [
+
+                   ],
+        "Mode":  "Trace"
+    },
+    {
+        "Name":  "Sew",
+        "Title":  "Khung may",
+        "Hint":  "Một điểm chạy trên thanh thời gian: nhấn [E] đúng lúc mũi kim chạm vùng vàng. Liên tục Perfect sẽ được trang phục chất lượng cao.  ·  [Esc] rời đi",
+        "RequireFlags":  [
+                             "Quest.Q26.Active"
+                         ],
+        "BlockFlags":  [
+                           "Obj.Q26.Sew"
+                       ],
+        "TakeItems":  [
+                          "FAB_SILK_001:1"
+                      ],
+        "Rounds":  [
+                       {
+                           "Label":  "Đường may vai",
+                           "Centre":  -1,
+                           "GoodHalf":  0.12,
+                           "PerfectHalf":  0.04,
+                           "Speed":  0.9,
+                           "TooLow":  "Mũi may lệch – đường may lỗi",
+                           "TooHigh":  "Mũi may lệch – đường may lỗi"
+                       },
+                       {
+                           "Label":  "Đường may sườn",
+                           "Centre":  -1,
+                           "GoodHalf":  0.12,
+                           "PerfectHalf":  0.04,
+                           "Speed":  0.95,
+                           "TooLow":  "Mũi may lệch – đường may lỗi",
+                           "TooHigh":  "Mũi may lệch – đường may lỗi"
+                       },
+                       {
+                           "Label":  "Đường may tay áo",
+                           "Centre":  -1,
+                           "GoodHalf":  0.11,
+                           "PerfectHalf":  0.04,
+                           "Speed":  1.0,
+                           "TooLow":  "May hơi lệch",
+                           "TooHigh":  "May hơi lệch"
+                       },
+                       {
+                           "Label":  "Viền cổ",
+                           "Centre":  -1,
+                           "GoodHalf":  0.11,
+                           "PerfectHalf":  0.04,
+                           "Speed":  1.05,
+                           "TooLow":  "Viền lỗi",
+                           "TooHigh":  "Viền lỗi"
+                       },
+                       {
+                           "Label":  "Thêu hoa văn",
+                           "Centre":  -1,
+                           "GoodHalf":  0.11,
+                           "PerfectHalf":  0.04,
+                           "Speed":  1.05,
+                           "TooLow":  "Mũi thêu lệch",
+                           "TooHigh":  "Mũi thêu lệch"
+                       },
+                       {
+                           "Label":  "Kiểm tra đường may cuối",
+                           "Centre":  -1,
+                           "GoodHalf":  0.1,
+                           "PerfectHalf":  0.035,
+                           "Speed":  1.1,
+                           "TooLow":  "Sót một đường chỉ",
+                           "TooHigh":  "Chỉ rối"
+                       }
+                   ],
+        "Skill":  "Tailor",
+        "SlotCost":  0,
+        "FailBelow":  0,
+        "ResultText":  "MAY XONG · FIRST OUTFIT CREATED · Chất lượng {0} ({1}/100)",
+        "OnDone":  [
+                       "GiveItem:OUTFIT_FIRST_001:1",
+                       "Progress:Q26.Sew",
+                       "Dialogue:WEAVER_D5_OUTFIT_DONE"
+                   ],
+        "OnFail":  [
+
+                   ],
+        "Mode":  "None"
+    }
+]

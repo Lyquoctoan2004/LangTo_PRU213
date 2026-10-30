@@ -1,0 +1,211 @@
+[
+  {
+    "Name": "WEAVER_D5_INTRO",
+    "Lines": [
+      { "Speaker": "Cô Lụa · Nghệ nhân dệt & may", "Text": "(Những tấm vải nhiều màu treo trên các thanh gỗ, bay nhẹ trong gió. Cô nhìn tấm vải cháu mang theo.) Con đã đi được gần hết con đường rồi." },
+      { "Speaker": "Cô Lụa · Nghệ nhân dệt & may", "Text": "Từ một chiếc lá dâu nhỏ, qua con tằm, chiếc kén, sợi tơ, màu nhuộm và khung dệt… cuối cùng cũng thành một tấm vải." },
+      { "Speaker": "Cô Lụa · Nghệ nhân dệt & may", "Text": "(Cô vào nhà may – bàn cắt, kéo, kim chỉ, ma-nơ-canh, kệ trang phục truyền thống.) Nhưng một tấm vải đẹp vẫn chỉ là một tấm vải. Muốn nó thành một câu chuyện, con phải biết biến nó thành trang phục." },
+      { "Speaker": "Cô Lụa · Nghệ nhân dệt & may", "Text": "Trước hết, chọn kiểu dáng, chất liệu, màu sắc, hoa văn và phụ kiện. Con có thể chọn lại thoải mái trước khi xác nhận." }
+    ],
+    "Choices": [],
+    "Actions": [
+      "SetFlag:Day5.Started",
+      "Progress:Q23.TalkTailor",
+      "Dialogue:DESIGN_TYPE"
+    ]
+  },
+  {
+    "Name": "CHIEF_D5_MORNING",
+    "Lines": [
+      { "Speaker": "Bà Xuân · Trưởng làng", "Text": "(Nắng sớm rọi lên những tấm vải phơi trên thanh gỗ.) Cháu mang tấm vải sang nhà may đi. Cô Lụa đang đợi – nghề tơ lụa không kết thúc ở khung dệt đâu." }
+    ],
+    "Choices": [],
+    "Actions": [ "SetFlag:Need.NPC_WeaverTailor" ]
+  },
+  {
+    "Name": "WEAVER_D5_DESIGN",
+    "Lines": [
+      { "Speaker": "Cô Lụa · Nghệ nhân dệt & may", "Text": "Ta chọn thiết kế tiếp nào. Một bộ trang phục đẹp không chỉ phụ thuộc vào chất liệu." }
+    ],
+    "Choices": [],
+    "Actions": [ "Dialogue:DESIGN_TYPE" ]
+  },
+  {
+    "Name": "DESIGN_TYPE",
+    "Lines": [
+      { "Speaker": "THIẾT KẾ TRANG PHỤC · 1/5", "Text": "Loại trang phục:" }
+    ],
+    "Choices": [
+      { "Text": "Áo dài cách tân", "Actions": [ "ClearFlags:Out.Type.", "SetFlag:Out.Type.AoDai" ], "NextDialogue": "DESIGN_MAT" },
+      { "Text": "Áo (Shirt)", "Actions": [ "ClearFlags:Out.Type.", "SetFlag:Out.Type.Shirt" ], "NextDialogue": "DESIGN_MAT" },
+      { "Text": "Quần (Pants)", "Actions": [ "ClearFlags:Out.Type.", "SetFlag:Out.Type.Pants" ], "NextDialogue": "DESIGN_MAT" },
+      { "Text": "Khăn quàng (Scarf)", "Actions": [ "ClearFlags:Out.Type.", "SetFlag:Out.Type.Scarf" ], "NextDialogue": "DESIGN_MAT" }
+    ],
+    "Actions": []
+  },
+  {
+    "Name": "DESIGN_MAT",
+    "Lines": [
+      { "Speaker": "THIẾT KẾ TRANG PHỤC · 2/5", "Text": "Chất liệu:" }
+    ],
+    "Choices": [
+      { "Text": "Vải thường (Basic Fabric)", "Actions": [ "ClearFlags:Out.Mat.", "SetFlag:Out.Mat.Basic" ], "NextDialogue": "DESIGN_COLOR" },
+      { "Text": "Lụa (Silk Fabric)", "Actions": [ "ClearFlags:Out.Mat.", "SetFlag:Out.Mat.Silk" ], "NextDialogue": "DESIGN_COLOR" },
+      { "Text": "Lụa cao cấp (High-quality Silk)", "Actions": [ "ClearFlags:Out.Mat.", "SetFlag:Out.Mat.High" ], "NextDialogue": "DESIGN_COLOR" }
+    ],
+    "Actions": []
+  },
+  {
+    "Name": "DESIGN_COLOR",
+    "Lines": [
+      { "Speaker": "THIẾT KẾ TRANG PHỤC · 3/5", "Text": "Màu sắc:" }
+    ],
+    "Choices": [
+      { "Text": "Đỏ (Red)", "Actions": [ "ClearFlags:Out.Color.", "SetFlag:Out.Color.Red" ], "NextDialogue": "DESIGN_PAT" },
+      { "Text": "Vàng (Yellow)", "Actions": [ "ClearFlags:Out.Color.", "SetFlag:Out.Color.Yellow" ], "NextDialogue": "DESIGN_PAT" },
+      { "Text": "Xanh (Blue)", "Actions": [ "ClearFlags:Out.Color.", "SetFlag:Out.Color.Blue" ], "NextDialogue": "DESIGN_PAT" },
+      { "Text": "Màu tự nhiên (Natural Color)", "Actions": [ "ClearFlags:Out.Color.", "SetFlag:Out.Color.Natural" ], "NextDialogue": "DESIGN_PAT" }
+    ],
+    "Actions": []
+  },
+  {
+    "Name": "DESIGN_PAT",
+    "Lines": [
+      { "Speaker": "THIẾT KẾ TRANG PHỤC · 4/5", "Text": "Hoa văn:" }
+    ],
+    "Choices": [
+      { "Text": "Hoa văn cơ bản (Basic Pattern)", "Actions": [ "ClearFlags:Out.Pat.", "SetFlag:Out.Pat.Basic" ], "NextDialogue": "DESIGN_ACC" },
+      { "Text": "Hoa văn núi (Mountain Pattern)", "Actions": [ "ClearFlags:Out.Pat.", "SetFlag:Out.Pat.Mountain" ], "NextDialogue": "DESIGN_ACC" },
+      { "Text": "Hoa văn hoa (Flower Pattern)", "Actions": [ "ClearFlags:Out.Pat.", "SetFlag:Out.Pat.Flower" ], "NextDialogue": "DESIGN_ACC" },
+      { "Text": "Hoa văn truyền thống (Traditional Pattern)", "Actions": [ "ClearFlags:Out.Pat.", "SetFlag:Out.Pat.Traditional" ], "NextDialogue": "DESIGN_ACC" }
+    ],
+    "Actions": []
+  },
+  {
+    "Name": "DESIGN_ACC",
+    "Lines": [
+      { "Speaker": "THIẾT KẾ TRANG PHỤC · 5/5", "Text": "Phụ kiện:" }
+    ],
+    "Choices": [
+      { "Text": "Khăn lụa (Scarf)", "Actions": [ "ClearFlags:Out.Acc.", "SetFlag:Out.Acc.Scarf" ], "NextDialogue": "DESIGN_CONFIRM" },
+      { "Text": "Thắt lưng (Belt)", "Actions": [ "ClearFlags:Out.Acc.", "SetFlag:Out.Acc.Belt" ], "NextDialogue": "DESIGN_CONFIRM" },
+      { "Text": "Vòng tay (Bracelet)", "Actions": [ "ClearFlags:Out.Acc.", "SetFlag:Out.Acc.Bracelet" ], "NextDialogue": "DESIGN_CONFIRM" },
+      { "Text": "Phụ kiện trang trí (Decorative Accessory)", "Actions": [ "ClearFlags:Out.Acc.", "SetFlag:Out.Acc.Decor" ], "NextDialogue": "DESIGN_CONFIRM" }
+    ],
+    "Actions": []
+  },
+  {
+    "Name": "DESIGN_CONFIRM",
+    "Lines": [
+      { "Speaker": "Cô Lụa · Nghệ nhân dệt & may", "Text": "(Cô xoay ma-nơ-canh, đặt tấm vải lên thử.) Thiết kế này được chưa? Xác nhận rồi cô sẽ lưu lại – chưa ưng thì cứ chọn lại." }
+    ],
+    "Choices": [
+      { "Text": "Xác nhận thiết kế.", "Actions": [ "SetFlag:Out.Designed", "Progress:Q24.Design" ], "NextDialogue": "None" },
+      { "Text": "Chọn lại từ đầu.", "Actions": [], "NextDialogue": "DESIGN_TYPE" }
+    ],
+    "Actions": []
+  },
+  {
+    "Name": "WEAVER_D5_CUT_HINT",
+    "Lines": [
+      { "Speaker": "Cô Lụa · Nghệ nhân dệt & may", "Text": "Bàn cắt ở ngay đây. Theo đường mẫu mà cắt – cắt sai là hao vải đấy, vải này quý lắm." }
+    ],
+    "Choices": [],
+    "Actions": []
+  },
+  {
+    "Name": "WEAVER_D5_SEW_HINT",
+    "Lines": [
+      { "Speaker": "Cô Lụa · Nghệ nhân dệt & may", "Text": "Cắt xong rồi thì sang khung may. Giữ nhịp mũi kim cho đều, liên tục chuẩn thì bộ đồ sẽ rất đẹp." }
+    ],
+    "Choices": [],
+    "Actions": []
+  },
+  {
+    "Name": "WEAVER_D5_OUTFIT_DONE",
+    "Lines": [
+      { "Speaker": "Cô Lụa · Nghệ nhân dệt & may", "Text": "(Cô nâng bộ trang phục lên, nhìn thật kỹ.) Con thấy không? Bộ trang phục này không chỉ được tạo ra bởi đôi tay của con." },
+      { "Speaker": "Cô Lụa · Nghệ nhân dệt & may", "Text": "Lá dâu → Con tằm → Chiếc kén → Tơ → Sợi → Màu nhuộm → Tấm vải → Trang phục." },
+      { "Speaker": "Cô Lụa · Nghệ nhân dệt & may", "Text": "Có công sức của người trồng dâu, người nuôi tằm, người ươm tơ, người se sợi, người nhuộm màu, người dệt vải. Và cuối cùng là người may." },
+      { "Speaker": "Cô Lụa · Nghệ nhân dệt & may", "Text": "Một bộ trang phục có thể chứa câu chuyện của cả một ngôi làng." }
+    ],
+    "Choices": [],
+    "Actions": [
+      "AddCulture:5",
+      "AddRel:NPC_WeaverTailor:5",
+      "SetFlag:Need.NPC_Chief"
+    ]
+  },
+  {
+    "Name": "WEAVER_D5_AFTER",
+    "Lines": [
+      { "Speaker": "Cô Lụa · Nghệ nhân dệt & may", "Text": "Trang phục đầu tiên của con xong rồi. Giờ đi cùng bà Xuân xem làng chuẩn bị lễ hội nhé." }
+    ],
+    "Choices": [],
+    "Actions": []
+  },
+
+  {
+    "Name": "CHIEF_D5_OUTFIT",
+    "Lines": [
+      { "Speaker": "Bà Xuân · Trưởng làng", "Text": "(Bà bước vào nhà may, nhìn bộ trang phục trên tay cháu.) Bà nghe nói cháu đã hoàn thành trang phục đầu tiên." }
+    ],
+    "Choices": [
+      { "Text": "Cháu vẫn còn rất nhiều điều phải học.", "Actions": [ "SetFlag:Choice.D5.Humble", "AddRel:NPC_Chief:3" ], "NextDialogue": "CHIEF_D5_FESTIVAL" },
+      { "Text": "Cháu muốn thử tạo ra một bộ đẹp hơn.", "Actions": [ "SetFlag:Choice.D5.Confident", "AddSkill:Tailor:15" ], "NextDialogue": "CHIEF_D5_FESTIVAL" },
+      { "Text": "Cháu muốn hiểu thêm ý nghĩa của những hoa văn này.", "Actions": [ "SetFlag:Choice.D5.Culture", "AddCulture:4" ], "NextDialogue": "CHIEF_D5_FESTIVAL" }
+    ],
+    "Actions": []
+  },
+  {
+    "Name": "CHIEF_D5_FESTIVAL",
+    "Lines": [
+      { "Speaker": "Bà Xuân · Trưởng làng", "Text": "(Bà dẫn cháu ra ngoài. Người dựng sân khấu, người treo vải, người trang trí cổng, người chuẩn bị thức ăn, các nghệ nhân hoàn thiện sản phẩm – cả làng đang chuẩn bị. Trên cổng làng có bảng: LỄ HỘI TƠ LỤA – NGÀY MAI.)" },
+      { "Speaker": "Bà Xuân · Trưởng làng", "Text": "Ngày mai lễ hội bắt đầu. Năm nay, cháu cũng có thể tham gia." },
+      { "Speaker": "Bà Xuân · Trưởng làng", "Text": "Nhưng trước khi bước lên sân khấu… cháu cần hoàn thiện câu chuyện của chính mình. Hãy nói chuyện với các nghệ nhân, nghe họ kể về nghề – nó sẽ giúp ích cho cháu." }
+    ],
+    "Choices": [],
+    "Actions": [
+      "Progress:Q27.TalkChief"
+    ]
+  },
+  {
+    "Name": "CHIEF_D5_END",
+    "Lines": [
+      { "Speaker": "Bà Xuân · Trưởng làng", "Text": "(Trời đã về chiều.) Cháu muốn nghe thêm chuyện các nghệ nhân trước, hay nghỉ cho khỏe? Mai là ngày hội rồi, nghe chuyện nghề cũng giúp ích cho cháu đấy." }
+    ],
+    "Choices": [
+      { "Text": "Cháu xin nghỉ ạ.", "Actions": [ "Progress:Q28.ReturnChief", "EndDay:D5" ], "NextDialogue": "None" },
+      { "Text": "Cháu đi nghe chuyện các nghệ nhân đã.", "Actions": [], "NextDialogue": "None" }
+    ],
+    "Actions": []
+  },
+
+  {
+    "Name": "STORY_SILK",
+    "Lines": [
+      { "Speaker": "Ông Khánh · Nghệ nhân nuôi tằm", "Text": "Muốn có tơ tốt, trước tiên phải chăm được tằm khỏe. Bốn mươi năm ta nuôi tằm, năm nào cũng học thêm được một điều từ chúng." },
+      { "Speaker": "Ông Khánh · Nghệ nhân nuôi tằm", "Text": "Người trồng dâu và người nuôi tằm là hai người đầu tiên của con đường tơ lụa. Thiếu họ, không có sợi nào cả." }
+    ],
+    "Choices": [],
+    "Actions": [ "SetFlag:Story.NPC_SilkMaster", "AddCulture:4", "AddRel:NPC_SilkMaster:3" ]
+  },
+  {
+    "Name": "STORY_DYER",
+    "Lines": [
+      { "Speaker": "Cô Mai · Nghệ nhân se tơ & nhuộm", "Text": "Màu của làng mình lấy từ lá, vỏ cây và đất quanh làng. Màu đỏ của lễ hội, màu chàm của núi, màu vàng của mùa gặt – mỗi màu một câu chuyện." },
+      { "Speaker": "Cô Mai · Nghệ nhân se tơ & nhuộm", "Text": "Hồi cô bằng tuổi cháu, bà ngoại dạy cô se sợi bằng một chiếc guồng gỗ. Giờ nó vẫn đứng đó, cạnh nhà cô." }
+    ],
+    "Choices": [],
+    "Actions": [ "SetFlag:Story.NPC_ThreadDyer", "AddCulture:4", "AddRel:NPC_ThreadDyer:3" ]
+  },
+  {
+    "Name": "STORY_WEAVER",
+    "Lines": [
+      { "Speaker": "Cô Lụa · Nghệ nhân dệt & may", "Text": "Hoa văn trên vải không phải để cho đẹp thôi đâu. Hoa văn núi kể về nơi mình ở, hoa văn hoa kể về mùa, hoa văn truyền thống kể về tổ tiên." },
+      { "Speaker": "Cô Lụa · Nghệ nhân dệt & may", "Text": "Mặc một bộ đồ có hoa văn, là mặc cả câu chuyện của làng lên người." }
+    ],
+    "Choices": [],
+    "Actions": [ "SetFlag:Story.NPC_WeaverTailor", "AddCulture:4", "AddRel:NPC_WeaverTailor:3" ]
+  }
+]

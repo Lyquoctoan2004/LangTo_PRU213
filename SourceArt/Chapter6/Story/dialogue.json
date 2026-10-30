@@ -1,0 +1,249 @@
+[
+  {
+    "Name": "CHIEF_F_PHASE_SELECT",
+    "Lines": [
+      {
+        "Speaker": "Bà Xuân · Trưởng làng",
+        "Text": "Thử thách đã bắt đầu. Trước tiên, chọn nguyên liệu đi con."
+      }
+    ],
+    "Choices": [],
+    "Actions": [
+      "Dialogue:FEST_SELECT"
+    ]
+  },
+  {
+    "Name": "CHIEF_F_OPEN",
+    "Lines": [
+      {
+        "Speaker": "Bà Xuân · Trưởng làng",
+        "Text": "(Cổng làng phủ đầy vải, các gian hàng đã mở, du khách bắt đầu đến, nhạc vang lên. Bà đứng giữa quảng trường.) Chào mừng! Ngày hội Tơ Lụa chính thức bắt đầu!"
+      },
+      {
+        "Speaker": "Bà Xuân · Trưởng làng",
+        "Text": "Con cứ đi quanh làng mà xem: chợ lụa, khu nghệ nhân trình diễn nghề, khu văn hóa. Khi nào xem đủ, quay lại gặp bà."
+      }
+    ],
+    "Choices": [],
+    "Actions": [
+      "Progress:Q40.TalkChief",
+      "StartQuest:Q41"
+    ]
+  },
+  {
+    "Name": "CHIEF_F_HINT",
+    "Lines": [
+      {
+        "Speaker": "Bà Xuân · Trưởng làng",
+        "Text": "Con đi xem chợ lụa, khu nghệ nhân và khu văn hóa đi. Bà cần con biết cả ngôi làng trước khi bước lên sân khấu."
+      }
+    ],
+    "Choices": [],
+    "Actions": []
+  },
+  {
+    "Name": "CHIEF_F_CHALLENGE",
+    "Lines": [
+      {
+        "Speaker": "Bà Xuân · Trưởng làng",
+        "Text": "(Lễ hội đã gần kết thúc. Bà gọi con ra riêng.) Con đã đi một chặng đường dài."
+      },
+      {
+        "Speaker": "Bà Xuân · Trưởng làng",
+        "Text": "Nhưng nếu muốn thực sự trở thành một người học nghề của ngôi làng, con phải hoàn thành thử thách cuối cùng: THỬ THÁCH TƠ LỤA – THE MASTER'S CHALLENGE."
+      },
+      {
+        "Speaker": "Bà Xuân · Trưởng làng",
+        "Text": "Đây không phải một mini-game: là cả một chuỗi – chọn nguyên liệu, nhuộm đúng màu lễ hội, dệt, may rồi mặc bộ đồ bước lên sân khấu. Những gì con chuẩn bị ba ngày qua sẽ quyết định."
+      }
+    ],
+    "Choices": [
+      {
+        "Text": "Cháu đã sẵn sàng.",
+        "Actions": [
+          "Progress:Q42.TalkChief",
+          "Dialogue:FEST_SELECT"
+        ],
+        "NextDialogue": "None"
+      },
+      {
+        "Text": "Cháu chưa sẵn sàng, cho cháu đi dạo thêm.",
+        "Actions": [],
+        "NextDialogue": "None"
+      }
+    ],
+    "Actions": []
+  },
+  {
+    "Name": "FEST_SELECT",
+    "Lines": [
+      {
+        "Speaker": "Bà Xuân · Trưởng làng",
+        "Text": "PHASE 1 – CHỌN NGUYÊN LIỆU. (Trên bàn là những thứ con chuẩn bị: kén, tơ, sợi, thuốc nhuộm.) Con chọn dùng loại nào cho thử thách?"
+      }
+    ],
+    "Choices": [
+      {
+        "Text": "Nguyên liệu tốt nhất con đã chuẩn bị (cần tay nghề mới dùng hết).",
+        "Actions": [
+          "ClearFlags:Fest.Mat.",
+          "SetFlag:Fest.Mat.High",
+          "Progress:Q43.Select",
+          "Notify:Chọn nguyên liệu tốt nhất – ra bàn nhuộm ở sân khấu"
+        ],
+        "NextDialogue": "None"
+      },
+      {
+        "Text": "Nguyên liệu vừa phải, chắc tay.",
+        "Actions": [
+          "ClearFlags:Fest.Mat.",
+          "SetFlag:Fest.Mat.Mid",
+          "Progress:Q43.Select",
+          "Notify:Chọn nguyên liệu vừa phải – ra bàn nhuộm ở sân khấu"
+        ],
+        "NextDialogue": "None"
+      },
+      {
+        "Text": "Nguyên liệu bình thường.",
+        "Actions": [
+          "ClearFlags:Fest.Mat.",
+          "SetFlag:Fest.Mat.Low",
+          "Progress:Q43.Select",
+          "Notify:Chọn nguyên liệu thường – ra bàn nhuộm ở sân khấu"
+        ],
+        "NextDialogue": "None"
+      }
+    ],
+    "Actions": []
+  },
+  {
+    "Name": "CHIEF_F_PHASE_HINT",
+    "Lines": [
+      {
+        "Speaker": "Bà Xuân · Trưởng làng",
+        "Text": "Bốn bàn ở sân khấu: nhuộm, dệt, may, rồi lên sàn diễn. Làm lần lượt. Bình tĩnh – con đã luyện đủ rồi."
+      }
+    ],
+    "Choices": [],
+    "Actions": []
+  },
+  {
+    "Name": "FEST_FAIL_PHASE",
+    "Lines": [
+      {
+        "Speaker": "Bà Xuân · Trưởng làng",
+        "Text": "(Âm nhạc chậm dần. Cháu đứng đó, nhận ra mình đã không giữ được tay nghề ở bước này.) Không sao. Con đã đi được rất xa."
+      },
+      {
+        "Speaker": "Bà Xuân · Trưởng làng",
+        "Text": "Nhưng con vẫn còn một cơ hội. Kỹ năng, nguyên liệu và bộ trang phục của con đều còn đó."
+      }
+    ],
+    "Choices": [
+      {
+        "Text": "TRY AGAIN – Thử lại từ sáng ngày hội.",
+        "Actions": [
+          "FestivalReset"
+        ],
+        "NextDialogue": "None"
+      }
+    ],
+    "Actions": []
+  },
+  {
+    "Name": "FEST_FAIL",
+    "Lines": [
+      {
+        "Speaker": "Bà Xuân · Trưởng làng",
+        "Text": "(Màn trình diễn kết thúc. Tiếng vỗ tay thưa thớt.) Tổng điểm của con: {Score:Final.Total}/100 – chưa đủ."
+      },
+      {
+        "Speaker": "Bà Xuân · Trưởng làng",
+        "Text": "Chế tác {Score:Final.Craft} · Thiết kế {Score:Final.Fashion} · Văn hóa {Score:Final.Culture} · Thiện cảm {Score:Final.Rel} · Trình diễn {Score:Final.Perf}."
+      },
+      {
+        "Speaker": "Bà Xuân · Trưởng làng",
+        "Text": "Không sao. Con đã đi được rất xa. Hãy dùng ngày hội này để học thêm – và thử lại."
+      }
+    ],
+    "Choices": [
+      {
+        "Text": "TRY AGAIN – Thử lại từ sáng ngày hội.",
+        "Actions": [
+          "FestivalReset"
+        ],
+        "NextDialogue": "None"
+      }
+    ],
+    "Actions": []
+  },
+  {
+    "Name": "FEST_SUCCESS",
+    "Lines": [
+      {
+        "Speaker": "Bà Xuân · Trưởng làng",
+        "Text": "(Người dân vỗ tay. Các nghệ nhân đứng lên.) FESTIVAL SUCCESS! Tổng điểm của con: {Score:Final.Total}/100 – xếp hạng {Rank}."
+      },
+      {
+        "Speaker": "Bà Xuân · Trưởng làng",
+        "Text": "Chế tác {Score:Final.Craft} · Thiết kế {Score:Final.Fashion} · Văn hóa {Score:Final.Culture} · Thiện cảm {Score:Final.Rel} · Trình diễn {Score:Final.Perf}."
+      },
+      {
+        "Speaker": "Bà Xuân · Trưởng làng",
+        "Text": "Con đã làm được. Nhưng điều quan trọng nhất không phải là điểm số. Con đã hiểu được vì sao một sợi tơ nhỏ bé…"
+      },
+      {
+        "Speaker": "Bà Xuân · Trưởng làng",
+        "Text": "…có thể mang theo câu chuyện của cả một vùng đất."
+      },
+      {
+        "Speaker": "Ông Khánh · Nghệ nhân nuôi tằm · Cô Mai · Nghệ nhân se tơ & nhuộm · Cô Lụa · Nghệ nhân dệt & may",
+        "Text": "(Người nuôi tằm, người ươm tơ, người se tơ, người nhuộm, người dệt, người may – tất cả đứng cùng nhau, bên cạnh con.)"
+      }
+    ],
+    "Choices": [],
+    "Actions": [
+      "SetFlag:Fest.Done",
+      "EndDay:D_END"
+    ]
+  },
+  {
+    "Name": "SIGN_MARKET",
+    "Lines": [
+      {
+        "Speaker": "CHỢ LỤA (Silk Market)",
+        "Text": "Các gian hàng bày tơ, sợi, vải và trang phục. Mỗi món đều mang dấu tay của một nghệ nhân – và một hoa văn riêng."
+      }
+    ],
+    "Choices": [],
+    "Actions": [
+      "Progress:Q41.Market"
+    ]
+  },
+  {
+    "Name": "SIGN_CRAFT",
+    "Lines": [
+      {
+        "Speaker": "KHU NGHỆ NHÂN (Crafting Area)",
+        "Text": "Các nghệ nhân trình diễn: ươm tơ, se sợi, nhuộm, dệt, may. Khách đứng xem và hỏi han – nghề này lại được truyền thêm một thế hệ."
+      }
+    ],
+    "Choices": [],
+    "Actions": [
+      "Progress:Q41.Crafting"
+    ]
+  },
+  {
+    "Name": "SIGN_CULTURE",
+    "Lines": [
+      {
+        "Speaker": "KHU VĂN HÓA (Cultural Area)",
+        "Text": "Lịch sử làng nghề, ý nghĩa các hoa văn, trang phục truyền thống và quy trình tạo lụa, được kể lại qua từng tấm bảng gỗ."
+      }
+    ],
+    "Choices": [],
+    "Actions": [
+      "Progress:Q41.Cultural"
+    ]
+  }
+]

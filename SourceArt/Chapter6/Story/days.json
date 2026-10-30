@@ -1,0 +1,16 @@
+[
+  {
+    "Name": "D_END",
+    "Title": "THE END",
+    "Lines": [
+      "Điểm tổng: {Score:Final.Total}/100 – xếp hạng {Rank}",
+      "Một sợi tơ nhỏ bé có thể mang theo câu chuyện của cả một vùng đất.",
+      "Cảm ơn bạn đã đồng hành cùng Làng Tơ Lụa."
+    ],
+    "SetFlags": [
+      "SetFlag:Game.Complete"
+    ],
+    "OnClose": [],
+    "Morning": "THE END"
+  }
+]

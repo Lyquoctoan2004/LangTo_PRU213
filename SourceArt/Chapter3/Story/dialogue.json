@@ -1,0 +1,235 @@
+[
+  {
+    "Name": "CHIEF_D3_MORNING",
+    "Lines": [
+      { "Speaker": "Bà Xuân · Trưởng làng", "Text": "(Sương sớm còn đọng trên mái nhà sàn. Một sợi tơ mới bắt đầu.) Chào cháu, ngày thứ ba rồi đấy." },
+      { "Speaker": "Bà Xuân · Trưởng làng", "Text": "Hôm qua cháu đã chăm tằm, thu kén, giúp làng trang trí sân lễ hội, lại còn kéo được sợi tơ đầu tiên. Việc hôm qua cháu làm trọn vẹn cả." },
+      { "Speaker": "Bà Xuân · Trưởng làng", "Text": "Bây giờ hãy xem chúng ta biến những chiếc kén ấy thành sợi tơ như thế nào. Ông Khánh đang đợi cháu ở nồi ươm tơ." }
+    ],
+    "Choices": [],
+    "Actions": [
+      "Progress:Q14.TalkChief",
+      "SetFlag:Day3.Started",
+      "SetFlag:Need.NPC_SilkMaster",
+      "StartQuestIf:Q15:Quest.Q12.Done"
+    ]
+  },
+  {
+    "Name": "CHIEF_D3_MORNING_LEFT",
+    "Lines": [
+      { "Speaker": "Bà Xuân · Trưởng làng", "Text": "(Nắng sớm chiếu qua sân lễ hội.) Chào cháu, ngày thứ ba rồi. Hôm qua cháu còn dở sợi tơ đầu tiên đúng không?" },
+      { "Speaker": "Bà Xuân · Trưởng làng", "Text": "Không sao, không ai phạt cháu cả. Cháu sang chỗ ông Khánh làm nốt cho xong – xong rồi mới ươm cả mẻ kén." }
+    ],
+    "Choices": [],
+    "Actions": [
+      "Progress:Q14.TalkChief",
+      "SetFlag:Day3.Started",
+      "SetFlag:Need.NPC_SilkMaster",
+      "StartQuestIf:Q12:Unlock.SilkReeling",
+      "Notify:Việc còn dở từ hôm qua: Sợi tơ đầu tiên – đi gặp ông Khánh"
+    ]
+  },
+  {
+    "Name": "CHIEF_D3_HINT_LEFT",
+    "Lines": [
+      { "Speaker": "Bà Xuân · Trưởng làng", "Text": "Cháu làm nốt sợi tơ đầu tiên ở chỗ ông Khánh đi. Xong rồi mới đến mẻ tơ lớn." }
+    ],
+    "Choices": [],
+    "Actions": []
+  },
+  {
+    "Name": "CHIEF_D3_HINT_SILK",
+    "Lines": [
+      { "Speaker": "Bà Xuân · Trưởng làng", "Text": "Ra nồi ươm tơ cạnh xưởng, chọn những chiếc kén tốt rồi ươm cho cẩn thận. Kén cháu thu hôm qua sẽ quyết định tơ đẹp hay không đấy." }
+    ],
+    "Choices": [],
+    "Actions": []
+  },
+  {
+    "Name": "CHIEF_D3_HINT_SPIN",
+    "Lines": [
+      { "Speaker": "Bà Xuân · Trưởng làng", "Text": "Tơ còn mảnh quá, chưa dệt được. Cháu mang sang xưởng cô Mai bên suối để se thành sợi." }
+    ],
+    "Choices": [],
+    "Actions": []
+  },
+  {
+    "Name": "CHIEF_D3_DAY_END",
+    "Lines": [
+      { "Speaker": "Bà Xuân · Trưởng làng", "Text": "(Mặt trời bắt đầu lặn. Bà cầm cuộn sợi tơ cháu vừa làm, xoay nhẹ trong tay.) Đây mới chỉ là một sợi nhỏ." },
+      { "Speaker": "Bà Xuân · Trưởng làng", "Text": "Nhưng rồi nó sẽ trở thành một phần của thứ lớn hơn." },
+      { "Speaker": "Bà Xuân · Trưởng làng", "Text": "(Bà chỉ về phía khung dệt ở xa, nơi các nghệ nhân đang dệt những tấm vải nhiều màu.) Mai là ngày thứ tư. Xưởng dệt sẽ mở cửa đón cháu." }
+    ],
+    "Choices": [],
+    "Actions": [
+      "Progress:Q17.ReturnChief",
+      "EndDay:3"
+    ]
+  },
+  {
+    "Name": "CHIEF_D3_REST",
+    "Lines": [
+      { "Speaker": "Bà Xuân · Trưởng làng", "Text": "(Trời đã về chiều.) Cháu đã ươm được tơ rồi, chỉ còn công đoạn se tơ là dở thôi." },
+      { "Speaker": "Bà Xuân · Trưởng làng", "Text": "Cháu muốn làm nốt cho xong, hay nghỉ một chút? Không ai phạt cháu đâu – việc nào còn dở, mai cháu làm tiếp." }
+    ],
+    "Choices": [
+      { "Text": "Cháu muốn se tơ cho xong đã ạ.", "Actions": [], "NextDialogue": "None" },
+      { "Text": "Cháu xin nghỉ, mai cháu làm tiếp.", "Actions": [ "Progress:Q17.ReturnChief", "EndDay:3" ], "NextDialogue": "None" }
+    ],
+    "Actions": []
+  },
+  {
+    "Name": "CHIEF_D3_AFTER",
+    "Lines": [
+      { "Speaker": "Bà Xuân · Trưởng làng", "Text": "Cháu nghỉ ngơi cho khỏe nhé. Sáng mai sang xưởng dệt, cô Lụa đang chờ những sợi tơ của cháu." }
+    ],
+    "Choices": [],
+    "Actions": []
+  },
+
+  {
+    "Name": "REEL_SELECT",
+    "Lines": [
+      { "Speaker": "Ông Khánh · Nghệ nhân nuôi tằm", "Text": "(Ông trải kén ra rổ.) Một chiếc kén không tự biến thành tơ. Muốn lấy được sợi tơ đẹp, phải chọn cho kỹ." },
+      { "Speaker": "Ông Khánh · Nghệ nhân nuôi tằm", "Text": "Kén tốt cho sợi mịn. Kén kém thì sợi dễ đứt, tơ mất phẩm chất. Cháu chọn lấy một mẻ năm chiếc." }
+    ],
+    "Choices": [
+      {
+        "Text": "Chọn kén Tốt – Xuất sắc.",
+        "Actions": [ "ClearFlag:Pick.Good", "ClearFlag:Pick.Normal", "ClearFlag:Pick.Poor", "SetFlag:Pick.Good", "Progress:Q15.ChooseCocoons", "Notify:Đã chọn 5 kén Tốt – ra nồi ươm để tìm đầu sợi" ],
+        "NextDialogue": "None"
+      },
+      {
+        "Text": "Chọn kén Thường.",
+        "Actions": [ "ClearFlag:Pick.Good", "ClearFlag:Pick.Normal", "ClearFlag:Pick.Poor", "SetFlag:Pick.Normal", "Progress:Q15.ChooseCocoons", "Notify:Đã chọn 5 kén Thường – ra nồi ươm để tìm đầu sợi" ],
+        "NextDialogue": "None"
+      },
+      {
+        "Text": "Chọn kén Kém (gần như bỏ đi).",
+        "Actions": [ "ClearFlag:Pick.Good", "ClearFlag:Pick.Normal", "ClearFlag:Pick.Poor", "SetFlag:Pick.Poor", "Progress:Q15.ChooseCocoons", "Notify:Đã chọn 5 kén Kém – sợi tơ sẽ dễ đứt" ],
+        "NextDialogue": "None"
+      }
+    ],
+    "Actions": []
+  },
+  {
+    "Name": "SILK_D3_FEEDBACK",
+    "Lines": [
+      { "Speaker": "Ông Khánh · Nghệ nhân nuôi tằm", "Text": "(Ông cầm mớ tơ vừa ươm lên xem.) Xong cả mẻ rồi đấy. Cháu thấy công việc này thế nào?" }
+    ],
+    "Choices": [
+      { "Text": "Khó hơn cháu nghĩ ạ.", "Actions": [ "SetFlag:Choice.D3.Hard" ], "NextDialogue": "SILK_D3_FB_A" },
+      { "Text": "Cháu muốn thử lại ạ.", "Actions": [ "SetFlag:Choice.D3.Retry", "ResetObjective:Q15.ChooseCocoons", "ResetObjective:Q15.ReelSilk" ], "NextDialogue": "SILK_D3_FB_B" },
+      { "Text": "Cháu muốn học công đoạn tiếp theo.", "Actions": [ "SetFlag:Choice.D3.Next", "Progress:Q15.Feedback" ], "NextDialogue": "SILK_D3_FB_C" }
+    ],
+    "Actions": []
+  },
+  {
+    "Name": "SILK_D3_FB_A",
+    "Lines": [
+      { "Speaker": "Ông Khánh · Nghệ nhân nuôi tằm", "Text": "Ai mới bắt đầu cũng vậy. Ta nói cho cháu nghe mẹo nhỏ: kéo chậm quá thì sợi chùng, nhanh quá thì sợi đứt. Giữ đều tay là được." },
+      { "Speaker": "Ông Khánh · Nghệ nhân nuôi tằm", "Text": "Và nhớ chọn kén cho kỹ. Kén tốt thì tay đỡ vất vả hơn nhiều." }
+    ],
+    "Choices": [
+      { "Text": "Cháu hiểu rồi ạ.", "Actions": [], "NextDialogue": "SILK_D3_FEEDBACK" }
+    ],
+    "Actions": []
+  },
+  {
+    "Name": "SILK_D3_FB_B",
+    "Lines": [
+      { "Speaker": "Ông Khánh · Nghệ nhân nuôi tằm", "Text": "Tốt. Người làm nghề phải biết kiên nhẫn." },
+      { "Speaker": "Ông Khánh · Nghệ nhân nuôi tằm", "Text": "Cháu ra nồi ươm, chọn lại kén (cần thêm năm chiếc) rồi ươm lại mẻ khác cho đẹp hơn." }
+    ],
+    "Choices": [],
+    "Actions": []
+  },
+  {
+    "Name": "SILK_D3_FB_C",
+    "Lines": [
+      { "Speaker": "Ông Khánh · Nghệ nhân nuôi tằm", "Text": "Vậy cháu đã sẵn sàng rồi." },
+      { "Speaker": "Ông Khánh · Nghệ nhân nuôi tằm", "Text": "Nhưng tơ vẫn còn quá mảnh, chưa dùng để dệt được. Phải se những sợi tơ này lại thành sợi." },
+      { "Speaker": "Ông Khánh · Nghệ nhân nuôi tằm", "Text": "Cháu mang tơ sang xưởng cô Mai bên suối. Cô ấy sẽ chỉ cháu cách se tơ." }
+    ],
+    "Choices": [],
+    "Actions": []
+  },
+  {
+    "Name": "SILK_D3_HINT",
+    "Lines": [
+      { "Speaker": "Ông Khánh · Nghệ nhân nuôi tằm", "Text": "Ra nồi ươm tơ cạnh xưởng. Chọn kén cho kỹ, rồi tìm đầu sợi, giữ lực kéo và tốc độ cho đều. Xong thì quay lại cho ta xem." }
+    ],
+    "Choices": [],
+    "Actions": []
+  },
+  {
+    "Name": "SILK_D3_NEXT",
+    "Lines": [
+      { "Speaker": "Ông Khánh · Nghệ nhân nuôi tằm", "Text": "Cô Mai đang chờ cháu ở xưởng se tơ bên suối. Mang tơ sang đó nhé." }
+    ],
+    "Choices": [],
+    "Actions": []
+  },
+  {
+    "Name": "SILK_D3_AFTER_DAY",
+    "Lines": [
+      { "Speaker": "Ông Khánh · Nghệ nhân nuôi tằm", "Text": "Tằm, kén, tơ, sợi – cháu đã đi qua đủ các bước đầu. Sang xưởng dệt mà xem sợi của cháu thành vải." }
+    ],
+    "Choices": [],
+    "Actions": []
+  },
+
+  {
+    "Name": "DYER_D3_SPIN_INTRO",
+    "Lines": [
+      { "Speaker": "Cô Mai · Nghệ nhân se tơ & nhuộm", "Text": "(Cô Mai ngẩng lên khỏi guồng quay.) Cháu mang tơ sang đấy à? Tơ tốt mới chỉ là bước đầu thôi." },
+      { "Speaker": "Cô Mai · Nghệ nhân se tơ & nhuộm", "Text": "Muốn dệt thành vải, chúng ta cần một sợi đủ chắc. Đưa cô bốn sợi tơ, ra guồng bên cạnh nhà cô, cô chỉ cho." },
+      { "Speaker": "Cô Mai · Nghệ nhân se tơ & nhuộm", "Text": "Giữ tốc độ quay cho đúng. Quá nhanh thì sợi rối, quá chậm thì sợi yếu – nhẹ tay thôi cháu." }
+    ],
+    "Choices": [],
+    "Actions": [
+      "Progress:Q16.BringSilk"
+    ]
+  },
+  {
+    "Name": "DYER_D3_SPIN_HINT",
+    "Lines": [
+      { "Speaker": "Cô Mai · Nghệ nhân se tơ & nhuộm", "Text": "Cháu ra guồng se tơ cạnh nhà cô, cần bốn sợi tơ. Giữ nhịp quay đều là sợi sẽ chắc." }
+    ],
+    "Choices": [],
+    "Actions": []
+  },
+  {
+    "Name": "DYER_D3_AFTER",
+    "Lines": [
+      { "Speaker": "Cô Mai · Nghệ nhân se tơ & nhuộm", "Text": "(Cô cầm cuộn sợi lên xem.) Sợi cháu se khá đấy. Từ nay cháu đã có Sợi tơ trong tay rồi. Về báo bà Xuân đi, trời sắp tối." }
+    ],
+    "Choices": [],
+    "Actions": []
+  },
+  {
+    "Name": "DYER_D3_WAIT",
+    "Lines": [
+      { "Speaker": "Cô Mai · Nghệ nhân se tơ & nhuộm", "Text": "Khi nào cháu ươm xong tơ ở chỗ ông Khánh, mang sang đây cô dạy se. Tơ phải se mới thành sợi được." }
+    ],
+    "Choices": [],
+    "Actions": []
+  },
+
+  {
+    "Name": "WEAVER_D3_WAIT",
+    "Lines": [
+      { "Speaker": "Cô Lụa · Nghệ nhân dệt & may", "Text": "Khung dệt vẫn đang chờ sợi của cháu đấy. Se xong tơ rồi hãy sang cô – xưởng dệt sẽ mở cửa đón cháu." }
+    ],
+    "Choices": [],
+    "Actions": []
+  },
+  {
+    "Name": "WEAVER_D3_AFTER",
+    "Lines": [
+      { "Speaker": "Cô Lụa · Nghệ nhân dệt & may", "Text": "Cháu đã có sợi rồi à? Sáng mai sang xưởng dệt nhé, cô sẽ chỉ cho cháu cách đưa thoi qua khung." }
+    ],
+    "Choices": [],
+    "Actions": []
+  }
+]

@@ -1,0 +1,350 @@
+[
+  {
+    "Name": "CHIEF_INTRO",
+    "Lines": [
+      {
+        "Speaker": "Bà Xuân · Trưởng làng",
+        "Text": "Cháu là người từ thành phố đến phải không?"
+      }
+    ],
+    "Choices": [
+      {
+        "Text": "Dạ, cháu từ thành phố đến.",
+        "Actions": [],
+        "NextDialogue": "CHIEF_INTRO_2"
+      }
+    ],
+    "Actions": []
+  },
+  {
+    "Name": "CHIEF_INTRO_2",
+    "Lines": [
+      {
+        "Speaker": "Bà Xuân · Trưởng làng",
+        "Text": "(Bà nhìn bộ quần áo của cháu rồi mỉm cười.) Vậy chắc cháu chưa từng biết một bộ vải được tạo ra như thế nào."
+      },
+      {
+        "Speaker": "Bà Xuân · Trưởng làng",
+        "Text": "Ở đây, chúng tôi không bắt đầu bằng một tấm vải. Mọi thứ bắt đầu từ một con tằm."
+      },
+      {
+        "Speaker": "Bà Xuân · Trưởng làng",
+        "Text": "Tằm → Kén → Tơ → Sợi → Nhuộm → Dệt → May. Mỗi công đoạn đều do những nghệ nhân khác nhau đảm nhận – ở làng mình, mỗi nghệ nhân giữ hai công đoạn."
+      },
+      {
+        "Speaker": "Bà Xuân · Trưởng làng",
+        "Text": "Năm nay lễ hội đặc biệt hơn mọi năm. Làng muốn tổ chức một màn trình diễn trang phục do chính những người trẻ trong làng thực hiện."
+      },
+      {
+        "Speaker": "Bà Xuân · Trưởng làng",
+        "Text": "Nhưng nhiều người trẻ đã rời làng lên thành phố làm việc. Những người còn ở lại đang cố gắng duy trì nghề truyền thống."
+      },
+      {
+        "Speaker": "Bà Xuân · Trưởng làng",
+        "Text": "Chúng tôi muốn thế hệ trẻ hiểu rằng nghề này không chỉ là làm ra một tấm vải. Nó là câu chuyện của người trồng dâu, người nuôi tằm, người kéo tơ, người nhuộm, người dệt và người may."
+      },
+      {
+        "Speaker": "Bà Xuân · Trưởng làng",
+        "Text": "Nếu cháu muốn ở lại, bà có thể nhờ các nghệ nhân trong làng dạy cháu."
+      }
+    ],
+    "Choices": [
+      {
+        "Text": "Cháu muốn ở lại học nghề.",
+        "Actions": [
+          "Progress:Q00.TalkChief",
+          "StartQuest:Q01"
+        ],
+        "NextDialogue": "CHIEF_QUEST01"
+      },
+      {
+        "Text": "Cháu cần suy nghĩ thêm.",
+        "Actions": [],
+        "NextDialogue": "None"
+      }
+    ],
+    "Actions": []
+  },
+  {
+    "Name": "CHIEF_QUEST01",
+    "Lines": [
+      {
+        "Speaker": "Bà Xuân · Trưởng làng",
+        "Text": "Tốt lắm! Hãy đi gặp các nghệ nhân trong làng."
+      },
+      {
+        "Speaker": "Bà Xuân · Trưởng làng",
+        "Text": "Ông Khánh nuôi tằm ở căn nhà gần vườn dâu. Phía sau nhà ông là khu xưởng: cô Mai se tơ và nhuộm ở căn nhà mái đỏ sát bờ suối, cô Lụa dệt và may ở xưởng gỗ ngay cạnh."
+      }
+    ],
+    "Choices": [],
+    "Actions": []
+  },
+  {
+    "Name": "CHIEF_IDLE",
+    "Lines": [
+      {
+        "Speaker": "Bà Xuân · Trưởng làng",
+        "Text": "Lễ hội Tơ Lụa chỉ còn 7 ngày nữa. Cả làng đang bận rộn lắm."
+      }
+    ],
+    "Choices": [],
+    "Actions": []
+  },
+  {
+    "Name": "CHIEF_HINT_SILK",
+    "Lines": [
+      {
+        "Speaker": "Bà Xuân · Trưởng làng",
+        "Text": "Ông Khánh tuy khó tính nhưng dạy rất kỹ. Chăm tằm cho tốt nhé cháu."
+      }
+    ],
+    "Choices": [],
+    "Actions": []
+  },
+  {
+    "Name": "CHIEF_NOT_ALL_MET",
+    "Lines": [
+      {
+        "Speaker": "Bà Xuân · Trưởng làng",
+        "Text": "Cháu làm tốt lắm! Nhưng hãy gặp đủ các nghệ nhân trong làng trước khi trời tối nhé."
+      }
+    ],
+    "Choices": [],
+    "Actions": []
+  },
+  {
+    "Name": "CHIEF_DAY_END",
+    "Lines": [
+      {
+        "Speaker": "Bà Xuân · Trưởng làng",
+        "Text": "(Mặt trời bắt đầu lặn. Bà nhìn chiếc kén cháu mang theo.) Cháu đã bắt đầu rồi."
+      },
+      {
+        "Speaker": "Bà Xuân · Trưởng làng",
+        "Text": "Nhìn về phía con đường dẫn đến khu xưởng kia – những nghệ nhân khác đang chuẩn bị công việc."
+      },
+      {
+        "Speaker": "Bà Xuân · Trưởng làng",
+        "Text": "Ngày mai, cháu sẽ học cách biến chiếc kén này thành sợi tơ."
+      }
+    ],
+    "Choices": [],
+    "Actions": [
+      "Progress:Q03.ReturnChief",
+      "EndDay"
+    ]
+  },
+  {
+    "Name": "CHIEF_AFTER_DAY",
+    "Lines": [
+      {
+        "Speaker": "Bà Xuân · Trưởng làng",
+        "Text": "Ngày mai sẽ là một ngày dài. Nghỉ ngơi cho khỏe nhé cháu."
+      }
+    ],
+    "Choices": [],
+    "Actions": []
+  },
+  {
+    "Name": "SILK_BEFORE_CHIEF",
+    "Lines": [
+      {
+        "Speaker": "Ông Khánh · Nghệ nhân nuôi tằm",
+        "Text": "Người lạ à? Cháu nên chào bà Xuân – Trưởng làng – trước đã. Bà ấy đang ở sân lễ hội."
+      }
+    ],
+    "Choices": [],
+    "Actions": []
+  },
+  {
+    "Name": "SILK_INTRO",
+    "Lines": [
+      {
+        "Speaker": "Ông Khánh · Nghệ nhân nuôi tằm",
+        "Text": "(Bên trong là những nong tằm và những chiếc lá dâu xanh. Ông nhìn cháu.) Ta là Khánh, nuôi tằm ở làng này đã bốn mươi năm. Muốn học nghề à?"
+      }
+    ],
+    "Choices": [
+      {
+        "Text": "Dạ, cháu muốn học.",
+        "Actions": [
+          "Progress:Q01.MeetSilkMaster"
+        ],
+        "NextDialogue": "SILK_INTRO_2"
+      }
+    ],
+    "Actions": []
+  },
+  {
+    "Name": "SILK_INTRO_2",
+    "Lines": [
+      {
+        "Speaker": "Ông Khánh · Nghệ nhân nuôi tằm",
+        "Text": "(Ông đưa cho cháu một nắm lá dâu.) Vậy thì bắt đầu từ đây."
+      },
+      {
+        "Speaker": "Ông Khánh · Nghệ nhân nuôi tằm",
+        "Text": "Muốn có tơ tốt, trước tiên phải chăm được tằm khỏe."
+      },
+      {
+        "Speaker": "Ông Khánh · Nghệ nhân nuôi tằm",
+        "Text": "Tằm ăn lá dâu mỗi ngày. Muốn có những chiếc kén tốt, phải chuẩn bị đủ thức ăn cho chúng. Ra vườn dâu cạnh nhà hái đủ mười lá."
+      },
+      {
+        "Speaker": "Ông Khánh · Nghệ nhân nuôi tằm",
+        "Text": "Rồi cho tằm ăn ở những nong tằm trước nhà. Để ý nhiệt độ, độ ẩm và giữ khay luôn sạch sẽ."
+      }
+    ],
+    "Choices": [],
+    "Actions": [
+      "GiveItem:MAT_MULBERRY_LEAF_001:3",
+      "StartQuest:Q02"
+    ]
+  },
+  {
+    "Name": "SILK_HINT_LEAVES",
+    "Lines": [
+      {
+        "Speaker": "Ông Khánh · Nghệ nhân nuôi tằm",
+        "Text": "Lá dâu ở vườn dâu ngay cạnh nhà. Hái đủ mười lá rồi hãy cho tằm ăn."
+      }
+    ],
+    "Choices": [],
+    "Actions": []
+  },
+  {
+    "Name": "SILK_HINT_TRAY",
+    "Lines": [
+      {
+        "Speaker": "Ông Khánh · Nghệ nhân nuôi tằm",
+        "Text": "Đủ lá rồi thì ra nong tằm trước nhà. Tằm đói thì cho ăn, khay bẩn thì dọn, trời nóng thì mở cửa, khay khô thì phun sương."
+      }
+    ],
+    "Choices": [],
+    "Actions": []
+  },
+  {
+    "Name": "SILK_DISCOVERY",
+    "Lines": [
+      {
+        "Speaker": "Ông Khánh · Nghệ nhân nuôi tằm",
+        "Text": "(Cháu cầm chiếc kén trên tay.) Nhìn thì nhỏ bé đúng không?"
+      },
+      {
+        "Speaker": "Ông Khánh · Nghệ nhân nuôi tằm",
+        "Text": "Nhưng bên trong nó là hàng trăm mét tơ."
+      },
+      {
+        "Speaker": "Ông Khánh · Nghệ nhân nuôi tằm",
+        "Text": "Mỗi thứ trong bộ trang phục cuối cùng đều có một quá trình phía sau. Giờ về gặp bà Xuân đi, trời sắp tối rồi."
+      }
+    ],
+    "Choices": [],
+    "Actions": [
+      "SetFlag:Knowledge.CocoonToSilk",
+      "Progress:Q02.ShowCocoon"
+    ]
+  },
+  {
+    "Name": "SILK_IDLE",
+    "Lines": [
+      {
+        "Speaker": "Ông Khánh · Nghệ nhân nuôi tằm",
+        "Text": "Tằm khỏe thì tơ mới đẹp. Ngày mai ta sẽ chỉ cháu cách ươm tơ."
+      }
+    ],
+    "Choices": [],
+    "Actions": []
+  },
+  {
+    "Name": "DYER_BEFORE_CHIEF",
+    "Lines": [
+      {
+        "Speaker": "Cô Mai · Nghệ nhân se tơ & nhuộm",
+        "Text": "Chào cháu! Cháu đã gặp bà Xuân – Trưởng làng – chưa? Bà ấy ở sân lễ hội đấy."
+      }
+    ],
+    "Choices": [],
+    "Actions": []
+  },
+  {
+    "Name": "DYER_INTRO",
+    "Lines": [
+      {
+        "Speaker": "Cô Mai · Nghệ nhân se tơ & nhuộm",
+        "Text": "À, người học việc mới đây rồi! Cô là Mai."
+      },
+      {
+        "Speaker": "Cô Mai · Nghệ nhân se tơ & nhuộm",
+        "Text": "Cô lo hai việc: se những sợi tơ mảnh thành sợi chắc, rồi nhuộm cho chúng màu sắc."
+      },
+      {
+        "Speaker": "Cô Mai · Nghệ nhân se tơ & nhuộm",
+        "Text": "Không phải cứ cho sợi vào nước màu là có được một màu đẹp. Màu của cô lấy từ lá, vỏ cây và đất quanh làng."
+      },
+      {
+        "Speaker": "Cô Mai · Nghệ nhân se tơ & nhuộm",
+        "Text": "Khi nào cháu có tơ, ghé bãi nhuộm cạnh nhà cô bên suối nhé."
+      }
+    ],
+    "Choices": [],
+    "Actions": [
+      "Progress:Q01.MeetThreadDyer"
+    ]
+  },
+  {
+    "Name": "DYER_IDLE",
+    "Lines": [
+      {
+        "Speaker": "Cô Mai · Nghệ nhân se tơ & nhuộm",
+        "Text": "Nước suối hôm nay trong lắm, nhuộm màu chàm sẽ rất đẹp."
+      }
+    ],
+    "Choices": [],
+    "Actions": []
+  },
+  {
+    "Name": "WEAVER_BEFORE_CHIEF",
+    "Lines": [
+      {
+        "Speaker": "Cô Lụa · Nghệ nhân dệt & may",
+        "Text": "Cháu là khách của làng à? Ghé chào bà Xuân – Trưởng làng – trước đã nhé."
+      }
+    ],
+    "Choices": [],
+    "Actions": []
+  },
+  {
+    "Name": "WEAVER_INTRO",
+    "Lines": [
+      {
+        "Speaker": "Cô Lụa · Nghệ nhân dệt & may",
+        "Text": "Cô là Lụa. Cháu nghe tiếng khung dệt chứ? Đó là nhịp của làng mình."
+      },
+      {
+        "Speaker": "Cô Lụa · Nghệ nhân dệt & may",
+        "Text": "Cô dệt vải, rồi cắt may thành trang phục. Một tấm vải đẹp cần sợi tốt, màu đẹp và đôi tay kiên nhẫn."
+      },
+      {
+        "Speaker": "Cô Lụa · Nghệ nhân dệt & may",
+        "Text": "Đến lễ hội, cháu sẽ tự may bộ trang phục của mình. Nhưng trước hết hãy học từ con tằm đã."
+      }
+    ],
+    "Choices": [],
+    "Actions": [
+      "Progress:Q01.MeetWeaverTailor"
+    ]
+  },
+  {
+    "Name": "WEAVER_IDLE",
+    "Lines": [
+      {
+        "Speaker": "Cô Lụa · Nghệ nhân dệt & may",
+        "Text": "Khung dệt đang chờ những sợi tơ đầu tiên của cháu đấy."
+      }
+    ],
+    "Choices": [],
+    "Actions": []
+  }
+]

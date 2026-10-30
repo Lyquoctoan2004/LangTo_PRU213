@@ -1,0 +1,144 @@
+[
+    {
+        "Name":  "Dye",
+        "Title":  "Nồi nhuộm",
+        "Hint":  "Chỉnh nhiệt độ, lượng thuốc và thời gian ngâm: giữ cả ba thanh trong vùng xanh. W/S chọn thanh, A/D chỉnh. Lệch xuống là màu nhạt, lệch lên là màu sẫm.  ·  [Esc] rời đi",
+        "RequireFlags":  [
+                             "Quest.Q20.Active",
+                             "Obj.Q20.ChooseColor"
+                         ],
+        "BlockFlags":  [
+                           "Obj.Q20.Dye"
+                       ],
+        "TakeItems":  [
+                          "MAT_SILK_THREAD_001:3",
+                          "DYE_MATERIAL_001:3",
+                          "DYE_WATER_001:1"
+                      ],
+        "Rounds":  [
+                       {
+                           "Label":  "Nhiệt độ nước",
+                           "Centre":  -1,
+                           "GoodHalf":  0.12,
+                           "PerfectHalf":  0.04,
+                           "Speed":  0.8,
+                           "TooLow":  "Nước chưa đủ nóng – màu sẽ quá nhạt (too pale)",
+                           "TooHigh":  "Nước quá nóng – màu sẽ quá sẫm (too dark)"
+                       },
+                       {
+                           "Label":  "Lượng thuốc nhuộm",
+                           "Centre":  -1,
+                           "GoodHalf":  0.12,
+                           "PerfectHalf":  0.04,
+                           "Speed":  0.85,
+                           "TooLow":  "Ít thuốc quá – màu nhạt (too pale)",
+                           "TooHigh":  "Nhiều thuốc quá – màu sẫm (too dark)"
+                       },
+                       {
+                           "Label":  "Thời gian ngâm",
+                           "Centre":  -1,
+                           "GoodHalf":  0.12,
+                           "PerfectHalf":  0.04,
+                           "Speed":  0.9,
+                           "TooLow":  "Vớt ra sớm – màu nhạt (too pale)",
+                           "TooHigh":  "Ngâm quá lâu – màu sẫm (too dark)"
+                       }
+                   ],
+        "Skill":  "Dye",
+        "SlotCost":  0,
+        "FailBelow":  0,
+        "ResultText":  "NHUỘM HOÀN TẤT · Sợi tơ ×3 → Sợi tơ nhuộm màu ×3 · Chất lượng {0} ({1}/100)",
+        "OnDone":  [
+                       "GiveItem:MAT_COLORED_THREAD_001:3",
+                       "Progress:Q20.Dye"
+                   ],
+        "OnFail":  [
+
+                   ],
+        "Mode":  "Slider"
+    },
+    {
+        "Name":  "Weave",
+        "Title":  "Khung dệt",
+        "Hint":  "Giữ nhịp dệt: bấm đúng phím đang sáng (W A S D hoặc phím mũi tên) trước khi hết giờ – nhanh tay thì vải đều hơn.  ·  [Esc] rời đi",
+        "RequireFlags":  [
+                             "Quest.Q21.Active",
+                             "Obj.Q21.TalkWeaver"
+                         ],
+        "BlockFlags":  [
+                           "Obj.Q21.Weave"
+                       ],
+        "TakeItems":  [
+                          "MAT_COLORED_THREAD_001:3"
+                      ],
+        "Rounds":  [
+                       {
+                           "Label":  "Đưa thoi",
+                           "Centre":  -1,
+                           "GoodHalf":  0.12,
+                           "PerfectHalf":  0.04,
+                           "Speed":  0.9,
+                           "TooLow":  "Thoi đưa chậm – sợi chùng",
+                           "TooHigh":  "Thoi đưa vội – sợi lệch"
+                       },
+                       {
+                           "Label":  "Giữ nhịp",
+                           "Centre":  -1,
+                           "GoodHalf":  0.12,
+                           "PerfectHalf":  0.04,
+                           "Speed":  0.95,
+                           "TooLow":  "Lỡ nhịp",
+                           "TooHigh":  "Quá nhịp"
+                       },
+                       {
+                           "Label":  "Chọn đúng vị trí",
+                           "Centre":  -1,
+                           "GoodHalf":  0.11,
+                           "PerfectHalf":  0.04,
+                           "Speed":  1.0,
+                           "TooLow":  "Sợi vào lệch trái",
+                           "TooHigh":  "Sợi vào lệch phải"
+                       },
+                       {
+                           "Label":  "Giữ độ căng của sợi",
+                           "Centre":  -1,
+                           "GoodHalf":  0.11,
+                           "PerfectHalf":  0.04,
+                           "Speed":  1.0,
+                           "TooLow":  "Sợi chùng",
+                           "TooHigh":  "Sợi căng quá"
+                       },
+                       {
+                           "Label":  "Đưa thoi",
+                           "Centre":  -1,
+                           "GoodHalf":  0.11,
+                           "PerfectHalf":  0.04,
+                           "Speed":  1.05,
+                           "TooLow":  "Thoi đưa chậm – sợi chùng",
+                           "TooHigh":  "Thoi đưa vội – sợi lệch"
+                       },
+                       {
+                           "Label":  "Giữ nhịp",
+                           "Centre":  -1,
+                           "GoodHalf":  0.11,
+                           "PerfectHalf":  0.04,
+                           "Speed":  1.05,
+                           "TooLow":  "Lỡ nhịp",
+                           "TooHigh":  "Quá nhịp"
+                       }
+                   ],
+        "Skill":  "Weave",
+        "SlotCost":  0,
+        "FailBelow":  0,
+        "ResultText":  "DỆT HOÀN TẤT · Vải lụa đầu tiên · Chất lượng {0} ({1}/100)",
+        "OnDone":  [
+                       "GiveItem:FAB_SILK_001:1",
+                       "Progress:Q21.Weave",
+                       "Dialogue:WEAVER_D4_STORY"
+                   ],
+        "OnFail":  [
+
+                   ],
+        "Mode":  "Sequence"
+    }
+]
