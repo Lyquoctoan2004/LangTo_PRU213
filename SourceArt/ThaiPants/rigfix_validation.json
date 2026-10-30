@@ -1,0 +1,35 @@
+{
+  "asset": "/Game/Character/ThaiPants/SK_ThaiPants",
+  "max_influences": 8,
+  "tests": "Blender FK poses, full body visible; signed nearest-surface vertex test, not exhaustive triangle collision or UE animation playback",
+  "before": {
+    "rest": {
+      "inside_2mm": 0,
+      "worst_mm": -0.08
+    },
+    "stride": {
+      "inside_2mm": 7,
+      "worst_mm": -7.17
+    },
+    "high_step": {
+      "inside_2mm": 114,
+      "worst_mm": -17.94
+    }
+  },
+  "after": {
+    "rest": {
+      "inside_2mm": 0,
+      "worst_mm": 2.73
+    },
+    "stride": {
+      "inside_2mm": 0,
+      "worst_mm": 3.07
+    },
+    "high_step": {
+      "inside_2mm": 0,
+      "worst_mm": 0.92
+    }
+  },
+  "shape_adjustment_max_mm": 21.81,
+  "backup": "ThaiPants_before_rigfix.blend and Backup_before_rigfix/"
+}
