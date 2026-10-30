@@ -1,0 +1,37 @@
+{
+  "rest": {
+    "inside_2mm": 0,
+    "inside_any": 0,
+    "minimum_clearance_mm": 6.573
+  },
+  "arms_down": {
+    "inside_2mm": 181,
+    "inside_any": 276,
+    "minimum_clearance_mm": -9.507
+  },
+  "arms_up": {
+    "inside_2mm": 223,
+    "inside_any": 279,
+    "minimum_clearance_mm": -17.77
+  },
+  "reach": {
+    "inside_2mm": 10,
+    "inside_any": 56,
+    "minimum_clearance_mm": -2.789
+  },
+  "twist": {
+    "inside_2mm": 0,
+    "inside_any": 0,
+    "minimum_clearance_mm": 6.705
+  },
+  "bend": {
+    "inside_2mm": 0,
+    "inside_any": 0,
+    "minimum_clearance_mm": 1.032
+  },
+  "stride": {
+    "inside_2mm": 0,
+    "inside_any": 0,
+    "minimum_clearance_mm": 6.088
+  }
+}
