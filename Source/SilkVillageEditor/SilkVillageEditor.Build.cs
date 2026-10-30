@@ -1,0 +1,2 @@
+using UnrealBuildTool;
+public class SilkVillageEditor : ModuleRules { public SilkVillageEditor(ReadOnlyTargetRules Target):base(Target) { PCHUsage=PCHUsageMode.UseExplicitOrSharedPCHs; PublicDependencyModuleNames.AddRange(new string[]{"Core","CoreUObject","Engine","SilkVillageSystems","UnrealEd","BlueprintGraph","Kismet","KismetCompiler","UMG","UMGEditor","BlueprintEditorLibrary","Json","JsonUtilities"}); } }

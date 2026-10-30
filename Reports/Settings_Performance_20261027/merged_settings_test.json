@@ -1,0 +1,28 @@
+{
+  "presets": [
+    {
+      "level": 0,
+      "applied": 0,
+      "cloud_shadow": 0
+    },
+    {
+      "level": 1,
+      "applied": 1,
+      "cloud_shadow": 0
+    },
+    {
+      "level": 2,
+      "applied": 2,
+      "cloud_shadow": 1
+    },
+    {
+      "level": 3,
+      "applied": 3,
+      "cloud_shadow": 1
+    }
+  ],
+  "direct_selection_guard": true,
+  "volume_handler": true,
+  "resume": true,
+  "restored_quality": 3
+}

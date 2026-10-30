@@ -1,0 +1,64 @@
+# Unreal Engine generated directories
+/Saved/
+/Intermediate/
+/DerivedDataCache/
+/Binaries/
+/.vs/
+/Plugins/*/Intermediate/
+
+# Visual Studio & IDE temp files
+*.VC.db
+*.opensdf
+*.opendb
+*.sdf
+*.suo
+*.user
+*.sln.docstates
+
+# Blender backup files
+*.blend1
+
+# Packaged build (contains 7.1GB .ucas file - upload to GitHub Releases or split into chunks)
+/Packaged/
+
+# Files exceeding GitHub's 100MB hard limit per file
+Content/Custom/IvyTest/SM_IvyForTrees_01.uasset
+Content/Fab/MetaHuman/NomadWaveUndercut/Common/Meshes/SK_FemaleHead_BA.uasset
+Content/MedievalVillage/Meshes/Mesh_Components/SM_Cart_Body_01.uasset
+Content/Megascans/3D_Assets/BrokenStump/SM_BrokenStump_01.uasset
+Content/Megascans/3D_Assets/ForestRoots/SM_ForestRoots_01.uasset
+Content/Megascans/3D_Assets/ForestRoots/SM_ForestRoots_02.uasset
+Content/Megascans/3D_Assets/ForestTerrain/SM_ForestTerrain_01.uasset
+Content/Megascans/3D_Assets/ForestTerrain/SM_ForestTerrain_02.uasset
+Content/Megascans/3D_Assets/GiganticSandstoneTerrain/SM_GiganticSandstoneTerrain_01.uasset
+Content/Megascans/3D_Assets/HugeSandstoneCliff/SM_HugeSandstoneCliff_07.uasset
+Content/Megascans/3D_Assets/MassiveNordicCoastalCliff/SM_MassiveNordicCoastalCliff_01.uasset
+Content/Megascans/3D_Assets/MassiveTundraRockFormation/SM_MassiveTundraRockFormation_02.uasset
+Content/Megascans/3D_Assets/MossyEmbankment/SM_MossyEmbankment_01.uasset
+Content/Megascans/3D_Assets/MossyEmbankment/SM_MossyEmbankment_02.uasset
+Content/Megascans/3D_Assets/MossyRocks/SM_MossyRocks_01.uasset
+Content/Megascans/3D_Assets/MossyRocks/SM_MossyRocks_02.uasset
+Content/Megascans/3D_Assets/MossyStoneWallC/SM_MossyStoneWallC_01.uasset
+Content/Megascans/3D_Assets/MossyStoneWallC/SM_MossyStoneWallC_03.uasset
+Content/Megascans/3D_Assets/OldTreeBranch/SM_OldTreeBranch_05.uasset
+Content/Megascans/3D_Assets/TundraMossyBoulder/SM_TundraMossyBoulder_01.uasset
+Content/Meshes/_GENERATED/RockFormation/SM_MossyRock_01.uasset
+Content/Meshes/_GENERATED/RockFormation/SM_RockFormation_02.uasset
+Content/Meshes/_GENERATED/RockFormation/SM_RockFormation_04.uasset
+Content/MS/3D/Cement_Rubble_rinet/SM_Cement_Rubble_rinet_01_N1.uasset
+Content/MS/3D/Massive_Nordic_Coastal_Cliff_vdssailfa/SM_Massive_Nordic_Coastal_Cliff_vdssailfa_01_N1.uasset
+Content/MS/3D/Nordic_Beach_Rocks_ulznddxva/SM_Nordic_Beach_Rocks_ulznddxva_01_N1.uasset
+Content/MS/3D/Nordic_Beach_Rocks_vbokechga/SM_Nordic_Beach_Rocks_vbokechga_01_N1.uasset
+Content/MS/3D/Nordic_Beach_Rocks_vbwrfhhga/SM_Nordic_Beach_Rocks_vbwrfhhga_01_N1.uasset
+Content/MS/3D/Nordic_Beach_Rocky_Ground_ukoncdamw/SM_Nordic_Beach_Rocky_Ground_ukoncdamw_Flat_01_N1.uasset
+Content/MS/3D/Nordic_Beach_Rocky_Ground_ukoncdamw/SM_Nordic_Beach_Rocky_Ground_ukoncdamw_Flat_02_N1.uasset
+Content/Nha_Nuoi_Tam/Meshy_AI_Rustic_Clay_Shelter_1005072823_texture.uasset
+Content/PN_interactiveSpruceForest/Textures/MasterTextures/ModelTextures/Bark_N.uasset
+Content/SmartAssets/AssetMeshes/SM_Cliff_05.uasset
+Content/SmartAssets/AssetMeshes/SM_Cliff_09.uasset
+SourceArt/ThaiPants/pants_stage4.blend
+SourceArt/ThaiPants/pants_stage5.blend
+SourceArt/ThaiPants/pants_stage6.blend
+SourceArt/ThaiPants/pants_stage8.blend
+SourceArt/ThaiPants/pants_stage9.blend
+SourceArt/ThaiPants/ThaiPants_fit.blend

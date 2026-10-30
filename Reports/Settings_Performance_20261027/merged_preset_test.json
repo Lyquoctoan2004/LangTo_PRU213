@@ -1,0 +1,22 @@
+[
+  {
+    "level": 0,
+    "cloud_shadow": 0,
+    "shadow_pages": 512
+  },
+  {
+    "level": 1,
+    "cloud_shadow": 0,
+    "shadow_pages": 1024
+  },
+  {
+    "level": 2,
+    "cloud_shadow": 1,
+    "shadow_pages": 1536
+  },
+  {
+    "level": 3,
+    "cloud_shadow": 1,
+    "shadow_pages": 2048
+  }
+]

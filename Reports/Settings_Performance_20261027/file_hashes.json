@@ -1,0 +1,8 @@
+{
+  "Config/DefaultEngine.ini": "d680dc13f9f2109691acb47f72d59b6c203c4c461bdf427e3616a18c13575aa4",
+  "Config/DefaultScalability.ini": "a43d7ab3e3e1204d5e1ec25953e6abbd049dda04b668477cafe9f10138fa3bb3",
+  "Config/DefaultGameUserSettings.ini": "b574052400be2d6e54021e3eff4bd8a858234dcd75567373fe2b449de04d83ec",
+  "Content/SilkVillage/UI/WBP_SettingsMenu.uasset": "3912bdcaa4c7e3f1c62d0ed01693592a61e40e818e06c74984f9cb434d1e3bc9",
+  "Content/SilkVillage/UI/WBP_CoinHUD.uasset": "01b24324bbd2192fb9a1e8c724e6c91cac2511737d299ee7f99b85f0adcc595b",
+  "Content/ThirdPerson/Blueprints/BP_ThirdPersonCharacter.uasset": "6d204473b3a6d733cea4a7bbd922267b368c2a122929eedef76702758e25b38d"
+}
