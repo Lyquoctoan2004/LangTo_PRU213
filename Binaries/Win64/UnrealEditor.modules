@@ -1,0 +1,9 @@
+{
+	"BuildId": "47537391",
+	"Modules": 
+	{
+		"MutableSample": "UnrealEditor-MutableSample.dll",
+		"SilkVillageEditor": "UnrealEditor-SilkVillageEditor.dll",
+		"SilkVillageSystems": "UnrealEditor-SilkVillageSystems.dll"
+	}
+}

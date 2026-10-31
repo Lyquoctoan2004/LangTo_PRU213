@@ -1,10 +1,15 @@
-# Unreal Engine generated directories
+# Unreal Engine generated cache/temp directories
 /Saved/
 /Intermediate/
 /DerivedDataCache/
-/Binaries/
 /.vs/
 /Plugins/*/Intermediate/
+
+# Ignore debug symbols and live-coding patches in Binaries, keep Editor DLLs so project opens without Visual Studio
+*.pdb
+*.patch_*
+/Binaries/Win64/LangToLua.exe
+/Binaries/Win64/LangToLua-Win64-Shipping.exe
 
 # Visual Studio & IDE temp files
 *.VC.db
@@ -14,14 +19,17 @@
 *.suo
 *.user
 *.sln.docstates
+*.assembling
 
 # Blender backup files
 *.blend1
 
-# Packaged build (contains 7.1GB .ucas file - upload to GitHub Releases or split into chunks)
-/Packaged/
+# Packaged build crash dumps and raw files > 100MB (pushed as .part001, .part002... and restored via Setup_After_Pull.bat)
+/Packaged/**/Saved/Crashes/
+Packaged/Windows/LangToLua/Binaries/Win64/LangToLua.exe
+Packaged/Windows/LangToLua/Content/Paks/LangToLua-Windows.ucas
 
-# Files exceeding GitHub's 100MB hard limit per file
+# Content & SourceArt raw files > 100MB (pushed as .part001, .part002... and restored via Setup_After_Pull.bat)
 Content/Custom/IvyTest/SM_IvyForTrees_01.uasset
 Content/Fab/MetaHuman/NomadWaveUndercut/Common/Meshes/SK_FemaleHead_BA.uasset
 Content/MedievalVillage/Meshes/Mesh_Components/SM_Cart_Body_01.uasset
