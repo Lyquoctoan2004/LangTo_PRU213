@@ -1,15 +1,10 @@
-# LangTo_PRU213 (Làng Tơ Lụa - Unreal Engine 5.7)
+# LangTo_PRU213
 
-## Hướng dẫn sau khi `git clone` / `git pull` (Cho Collaborator)
+Project game Làng Tơ Lụa (Unreal Engine 5.7).
 
-Do GitHub giới hạn cứng **100 MB / 1 file**, các file dữ liệu lớn `> 100 MB` (bao gồm file data bản build game `Packaged/Windows/LangToLua/Content/Paks/LangToLua-Windows.ucas`, `LangToLua.exe` và 34 file `.uasset` lớn trong `Content/`) đã được tự động chia thành các mảnh `.part001`, `.part002`... (`< 90 MB`/mảnh) trên repo.
+## Hướng dẫn chạy project sau khi pull về
+Do một số file `.uasset` và file đóng gói trong `Packaged` nặng trên 100MB vượt giới hạn của GitHub nên đã được chia nhỏ thành các file `.part`.
 
-Sau khi `git clone` hoặc `git pull` code về máy, bạn chỉ cần làm **1 bước duy nhất**:
-
-### Bước 1: Chạy `Setup_After_Pull.bat`
-* Nháy đúp vào file **`Setup_After_Pull.bat`** ở thư mục gốc của project.
-* Script sẽ tự động ghép toàn bộ các mảnh `.part001`, `.part002`... về lại đúng file gốc (`LangToLua-Windows.ucas`, `LangToLua.exe` và 34 file `.uasset` trong `Content/`) và tự dọn dẹp các file `.part` để không tốn dung lượng ổ cứng.
-
-### Bước 2: Chạy Game hoặc Mở Project trong Unreal Engine 5.7
-* **Để chơi ngay bản Build Game (`Packaged`):** Mở **`Packaged\Windows\LangToLua.exe`**.
-* **Để mở Project & chỉnh sửa `Content` trong Unreal Engine 5.7:** Nháy đúp vào **`LangToLua.uproject`** (repo đã bao gồm sẵn các file `.dll` biên dịch trong `Binaries/Win64` nên có thể mở thẳng trong Unreal Editor mà không cần build lại C++).
+1. Sau khi clone/pull về, chạy file `Setup_After_Pull.bat` ở thư mục gốc để nối lại các file lớn.
+2. Để chạy bản build game: mở `Packaged\Windows\LangToLua.exe`.
+3. Để mở project trong Unreal Engine 5.7: mở file `LangToLua.uproject`.
