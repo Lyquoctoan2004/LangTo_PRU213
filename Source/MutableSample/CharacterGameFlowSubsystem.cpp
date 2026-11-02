@@ -1,6 +1,7 @@
 #include "CharacterGameFlowSubsystem.h"
 
 #include "CharacterCustomizationSubsystem.h"
+#include "CharacterTalkChat.h"
 #include "CharacterTalkWidget.h"
 #include "CustomizedCharacterStart.h"
 #include "Blueprint/UserWidget.h"
@@ -33,6 +34,7 @@
 #include "MuCO/CustomizableObjectInstance.h"
 #include "MuCO/CustomizableSkeletalComponent.h"
 #include "GroomComponent.h"
+#include "TalkFaceAnimInstance.h"
 #include "TimerManager.h"
 
 DEFINE_LOG_CATEGORY_STATIC(LogCharacterGameFlow, Log, All);
@@ -44,6 +46,8 @@ namespace CharacterGameFlow
 	static const FName ConfirmButtonName = TEXT("ConfirmButton");
 	static const FName TalkButtonName = TEXT("TalkButton");
 	static const FName StartTag = TEXT("CustomizedCharacterStart");
+	/** CO_Character's skin colour slider ("Màu da"): 0 light to 1 dark and warm. */
+	static const FString SkinToneParameter = TEXT("Skin Tone");
 	static constexpr float PollInterval = 0.1f;
 	static constexpr float Timeout = 30.0f;
 	static constexpr float ButtonGap = 12.0f;
@@ -75,6 +79,17 @@ namespace CharacterGameFlow
 		});
 		return Found;
 	}
+
+	static FAutoConsoleCommandWithWorld OpenTalkCommand(
+		TEXT("Talk.Open"),
+		TEXT("Opens the lobby talk area, as the \"Xác nhận nói chuyện\" button does."),
+		FConsoleCommandWithWorldDelegate::CreateLambda([](UWorld* World)
+		{
+			if (UCharacterGameFlowSubsystem* Flow = World ? World->GetSubsystem<UCharacterGameFlowSubsystem>() : nullptr)
+			{
+				Flow->OpenTalk();
+			}
+		}));
 }
 
 bool UCharacterGameFlowSubsystem::ShouldCreateSubsystem(UObject* Outer) const
@@ -91,6 +106,8 @@ void UCharacterGameFlowSubsystem::OnWorldBeginPlay(UWorld& InWorld)
 	if (InWorld.GetMapName().EndsWith(CharacterGameFlow::LobbyMapName))
 	{
 		InWorld.GetTimerManager().SetTimer(PollTimer, this, &UCharacterGameFlowSubsystem::TryBindLobbyConfirmButton, CharacterGameFlow::PollInterval, true);
+		FaceElapsedTime = 0.0f;
+		InWorld.GetTimerManager().SetTimer(FaceTimer, this, &UCharacterGameFlowSubsystem::TryAttachMetaHumanFace, CharacterGameFlow::PollInterval, true);
 	}
 	else if (InWorld.GetMapName().EndsWith(CharacterGameFlow::GameplayMapName))
 	{
@@ -136,6 +153,34 @@ void UCharacterGameFlowSubsystem::TryBindLobbyConfirmButton()
 	{
 		World->GetTimerManager().ClearTimer(PollTimer);
 		UE_LOG(LogCharacterGameFlow, Warning, TEXT("Could not find the Mutable lobby ConfirmButton."));
+	}
+}
+
+void UCharacterGameFlowSubsystem::TryAttachMetaHumanFace()
+{
+	UWorld* World = GetWorld();
+	if (!World)
+	{
+		return;
+	}
+
+	// The face is worn while customizing too, so the player shapes the body and clothes around the face they will talk to.
+	FaceElapsedTime += CharacterGameFlow::PollInterval;
+	const UCharacterTalkSettings& Settings = *GetDefault<UCharacterTalkSettings>();
+	UCustomizableSkeletalComponent* LobbyComponent = FindLobbyCustomizableComponent();
+	const bool bAttached = LobbyComponent && UTalkFaceAnimInstance::AttachTo(LobbyComponent->GetOwner());
+	if (bAttached)
+	{
+		// The neck and hands are the Mutable body's; give them the face's skin colour (the player can still change it).
+		if (UCustomizableObjectInstance* Instance = LobbyComponent->GetCustomizableObjectInstance(); Instance && Settings.MetaHumanBodySkinTone >= 0.f)
+		{
+			Instance->SetFloatParameterSelectedOption(CharacterGameFlow::SkinToneParameter, Settings.MetaHumanBodySkinTone);
+			Instance->UpdateSkeletalMeshAsync();
+		}
+	}
+	if (bAttached || FaceElapsedTime >= CharacterGameFlow::Timeout || Settings.MetaHumanFace.IsNull())
+	{
+		World->GetTimerManager().ClearTimer(FaceTimer);
 	}
 }
 

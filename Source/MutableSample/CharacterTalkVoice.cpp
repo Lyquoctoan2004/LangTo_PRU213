@@ -21,6 +21,7 @@
 #include "Serialization/JsonSerializer.h"
 #include "Serialization/JsonWriter.h"
 #include "Sound/SoundWaveProcedural.h"
+#include "TalkFaceAnimInstance.h"
 
 DEFINE_LOG_CATEGORY_STATIC(LogCharacterTalkVoice, Log, All);
 
@@ -433,9 +434,12 @@ void UCharacterTalkVoice::TranscribeWithGemini(const TArray<uint8>& Wav, FOnText
 	}
 	const FString Model = Models[ModelIndex];
 	const bool bHasNextModel = Models.IsValidIndex(ModelIndex + 1);
+	// Transcription models (gemini-*-transcribe) only write down speech: they take a short instruction, do not think, and
+	// answer with an audioTranscription part. On Vietnamese test lines they were exact where flash models misheard words.
+	const bool bTranscribeModel = Model.Contains(TEXT("transcribe"));
 
 	const TSharedRef<FJsonObject> Prompt = MakeShared<FJsonObject>();
-	Prompt->SetStringField(TEXT("text"), TEXT(
+	Prompt->SetStringField(TEXT("text"), bTranscribeModel ? TEXT("Transcribe this audio in Vietnamese.") : TEXT(
 		"Đây là bản ghi âm một người chơi nói với nhân vật trong game, thường bằng tiếng Việt. "
 		"Hãy chép lại NGUYÊN VĂN từng từ người đó nói, đúng chính tả tiếng Việt có dấu. "
 		"Không trả lời câu nói, không dịch, không tóm tắt, không sửa ý, không thêm lời nào khác. "
@@ -450,7 +454,7 @@ void UCharacterTalkVoice::TranscribeWithGemini(const TArray<uint8>& Wav, FOnText
 	const TSharedRef<FJsonObject> GenerationConfig = MakeShared<FJsonObject>();
 	GenerationConfig->SetNumberField(TEXT("temperature"), 0.0);
 	// Writing down what was said needs little thinking; at the default level it took about three times as long.
-	if (!Settings.Effort.IsEmpty())
+	if (!Settings.Effort.IsEmpty() && !bTranscribeModel)
 	{
 		const TSharedRef<FJsonObject> ThinkingConfig = MakeShared<FJsonObject>();
 		ThinkingConfig->SetStringField(TEXT("thinkingLevel"), Settings.Effort);
@@ -484,14 +488,20 @@ void UCharacterTalkVoice::TranscribeWithGemini(const TArray<uint8>& Wav, FOnText
 			return;
 		}
 
-		// Skip "thought" parts; the transcript is the plain text.
+		// Skip "thought" parts; the transcript is the plain text, or a transcription model's audioTranscription.text.
 		FString Text;
 		for (const TSharedPtr<FJsonValue>& Value : CharacterTalkVoice::GeminiParts(Response->GetContentAsString()))
 		{
 			const TSharedPtr<FJsonObject> Part = Value->AsObject();
 			bool bThought = false;
 			FString PartText;
-			if (Part.IsValid() && !(Part->TryGetBoolField(TEXT("thought"), bThought) && bThought) && Part->TryGetStringField(TEXT("text"), PartText))
+			const TSharedPtr<FJsonObject>* Transcription = nullptr;
+			if (!Part.IsValid() || (Part->TryGetBoolField(TEXT("thought"), bThought) && bThought))
+			{
+				continue;
+			}
+			if (Part->TryGetStringField(TEXT("text"), PartText)
+				|| (Part->TryGetObjectField(TEXT("audioTranscription"), Transcription) && (*Transcription)->TryGetStringField(TEXT("text"), PartText)))
 			{
 				Text += PartText;
 			}
@@ -1034,7 +1044,7 @@ void UCharacterTalkVoice::TickFace(float DeltaTime)
 		EmotionTimeLeft = FMath::Max(EmotionTimeLeft, CharacterTalkVoice::EmotionHoldSeconds);
 	}
 	EmotionTimeLeft = FMath::Max(0.f, EmotionTimeLeft - DeltaTime);
-	const FFaceShape Target = FFaceShape::Lerp(FFaceShape(), EmotionTimeLeft > 0.f ? EmotionShape : MoodShape, Settings.EmotionStrength);
+	const FFaceShape Target = FFaceShape::Lerp(FFaceShape(), EmotionTimeLeft > 0.f ? EmotionShape : MoodShape, Settings.EmotionStrength * Style.Expressiveness);
 	Face = FFaceShape::Lerp(Face, Target, FMath::Clamp(DeltaTime * CharacterTalkVoice::ExpressionSpeed, 0.f, 1.f));
 
 	// Blinks every few seconds, sometimes twice.
@@ -1044,7 +1054,7 @@ void UCharacterTalkVoice::TickFace(float DeltaTime)
 		if (BlinkCountdown <= 0.f)
 		{
 			BlinkPhase = 0.f;
-			BlinkCountdown = FMath::FRand() < 0.2f ? 0.25f : FMath::FRandRange(2.f, 5.5f);
+			BlinkCountdown = FMath::FRand() < 0.2f ? 0.25f : FMath::FRandRange(2.f, 5.5f) / FMath::Max(Style.BlinkRate, 0.1f);
 		}
 	}
 	if (BlinkPhase >= 0.f)
@@ -1058,24 +1068,25 @@ void UCharacterTalkVoice::TickFace(float DeltaTime)
 		}
 	}
 
-	// Quick glances: mostly at the player, now and then a little aside (up when thinking).
+	// Quick glances: at the player or aside, as often and as far as the personality looks away (up when thinking, below
+	// the player's eyes when shy).
 	SaccadeCountdown -= DeltaTime;
 	if (SaccadeCountdown <= 0.f)
 	{
-		const float Range = Settings.EyeMotionDegrees;
-		EyeTarget = FMath::FRand() < 0.55f ? FVector2D::ZeroVector : FVector2D(FMath::FRandRange(-Range, Range), FMath::FRandRange(-Range, Range) * 0.5f);
+		const float Range = Settings.EyeMotionDegrees * Style.GlanceRange;
+		EyeTarget = FMath::FRand() >= Style.LookAway ? FVector2D::ZeroVector : FVector2D(FMath::FRandRange(-Range, Range), FMath::FRandRange(-Range, Range) * 0.5f);
 		SaccadeCountdown = FMath::FRandRange(0.7f, 2.5f);
 	}
-	const FVector2D Look = EyeTarget + FVector2D(0.f, -Face.LookUp * Settings.EyeMotionDegrees * 1.5f);
+	const FVector2D Look = EyeTarget + FVector2D(0.f, Style.GazeDown - Face.LookUp * Settings.EyeMotionDegrees * 1.5f);
 	EyeLook = FMath::Vector2DInterpTo(EyeLook, Look, DeltaTime, 25.f);
 
 	// Talking: brows lift on loud syllables, the head moves with the rhythm.
 	TalkWeight = FMath::FInterpTo(TalkWeight, IsSpeaking() ? 1.f : 0.f, DeltaTime, 3.f);
 	SpeechBrow = FMath::FInterpTo(SpeechBrow, IsSpeaking() ? FMath::Clamp((JawOpen - 0.5f) * 2.f, 0.f, 1.f) : 0.f, DeltaTime, 6.f);
-	const float Motion = Settings.HeadMotionDegrees * (0.35f + 0.65f * TalkWeight);
-	HeadAngles.X = Face.HeadPitch + Motion * (0.6f * FMath::PerlinNoise1D(FaceTime * 0.6f) + 0.4f * JawOpen);
+	const float Motion = Settings.HeadMotionDegrees * Style.HeadMotion * (0.35f + 0.65f * TalkWeight);
+	HeadAngles.X = Style.HeadPitch + Face.HeadPitch + Motion * (0.6f * FMath::PerlinNoise1D(FaceTime * 0.6f) + 0.4f * JawOpen);
 	HeadAngles.Y = Motion * 0.8f * FMath::PerlinNoise1D(FaceTime * 0.35f + 17.f);
-	HeadAngles.Z = Face.HeadRoll + Motion * 0.5f * FMath::PerlinNoise1D(FaceTime * 0.27f + 41.f);
+	HeadAngles.Z = Style.HeadRoll + Face.HeadRoll + Motion * 0.5f * FMath::PerlinNoise1D(FaceTime * 0.27f + 41.f);
 
 	// Mutable rebuilds the mesh when the character changes; bind again to the new one.
 	RebindCountdown -= DeltaTime;
@@ -1088,6 +1099,93 @@ void UCharacterTalkVoice::TickFace(float DeltaTime)
 			BindJaw(FaceTarget.Get());
 		}
 	}
+	UpdateMetaHumanFace();
+}
+
+void UCharacterTalkVoice::UpdateMetaHumanFace()
+{
+	USkeletalMeshComponent* FaceMesh = MetaHumanFace.Get();
+	UTalkFaceAnimInstance* Anim = FaceMesh ? Cast<UTalkFaceAnimInstance>(FaceMesh->GetAnimInstance()) : nullptr;
+	if (!Anim)
+	{
+		return;
+	}
+	const UCharacterTalkSettings& Settings = *GetDefault<UCharacterTalkSettings>();
+
+	// Values are 0..1 on MetaHuman expression controls; the face shape's signed values pick which control of a pair moves.
+	// Contributions to one control add up (a smirk on top of a smile).
+	TMap<FName, float> Values;
+	auto Add = [&Values](const FString& Name, float Value)
+	{
+		if (Value > 0.f)
+		{
+			Values.FindOrAdd(FName(TEXT("CTRL_expressions_") + Name)) += Value;
+		}
+	};
+	auto Both = [&Add](const TCHAR* Name, float Value)
+	{
+		Add(FString(Name) + TEXT("L"), Value);
+		Add(FString(Name) + TEXT("R"), Value);
+	};
+
+	// Speech: the jaw follows the voice's loudness (as wide as the personality speaks), the upper lip lifts a little on
+	// loud syllables. Between words the lips close, pressed together as firmly as the personality holds them.
+	Add(TEXT("jawOpen"), (JawOpen * Settings.MetaHumanJawOpen + Face.MouthOpen * 0.45f) * Style.Jaw);
+	Both(TEXT("mouthUpperLipRaise"), JawOpen * 0.2f);
+	const float Press = Style.LipPress * FMath::Clamp(1.f - JawOpen * 3.f - Face.MouthOpen, 0.f, 1.f);
+	for (const TCHAR* Lip : { TEXT("mouthLipsTogetherUL"), TEXT("mouthLipsTogetherUR"), TEXT("mouthLipsTogetherDL"), TEXT("mouthLipsTogetherDR") })
+	{
+		Add(Lip, Press);
+	}
+
+	if (Settings.bLivelyFace)
+	{
+		// MetaHuman controls need values near 1 to read clearly at talking distance, so the face shape is mapped generously.
+		const float Smile = Face.Smile + TalkWeight * 0.1f;
+		Both(TEXT("mouthCornerPull"), Smile * 1.1f);
+		Both(TEXT("eyeCheekRaise"), Smile * 0.5f);
+		Both(TEXT("mouthCornerDepress"), -Smile * 1.2f);
+		Both(TEXT("mouthStretch"), -Smile * 0.3f);
+
+		// A one-sided smile (the personality's), stronger while talking, with a dimple and a slight squint on that side.
+		const float Smirk = FMath::Abs(Style.Smirk) * (0.6f + 0.4f * TalkWeight);
+		const TCHAR* SmirkSide = Style.Smirk >= 0.f ? TEXT("L") : TEXT("R");
+		Add(FString(TEXT("mouthCornerPull")) + SmirkSide, Smirk);
+		Add(FString(TEXT("mouthDimple")) + SmirkSide, Smirk * 0.5f);
+		Add(FString(TEXT("eyeCheekRaise")) + SmirkSide, Smirk * 0.3f);
+
+		// Brows: sad raises the inner ends, anger pulls them down and together (with a wrinkled nose), thinking tilts one up.
+		const float Lift = SpeechBrow * 0.3f * Style.TalkBrows;
+		Both(TEXT("browRaiseIn"), (Face.BrowInner + Lift) * 1.2f);
+		Add(TEXT("browRaiseOuterL"), (Face.BrowOuter + Lift + Face.BrowTilt * 0.8f) * 1.2f);
+		Add(TEXT("browRaiseOuterR"), (Face.BrowOuter + Lift - Face.BrowTilt * 0.3f) * 1.2f);
+		Both(TEXT("browDown"), (FMath::Max(-Face.BrowInner, 0.f) + FMath::Max(-Face.BrowOuter, 0.f) * 0.5f) * 1.3f);
+		Both(TEXT("browLateral"), Face.BrowSqueeze * 1.2f);
+		Both(TEXT("noseWrinkle"), -Face.BrowInner * Face.BrowSqueeze * 0.7f);
+		Both(TEXT("jawClench"), -Face.BrowInner * Face.BrowSqueeze * 0.5f);
+
+		// Lids: blinks, squints (Lids > 0) and wide eyes (Lids < 0). A smile already narrows the eyes through the cheeks,
+		// so it squints less (a full smile with a full squint shuts them).
+		const float Squint = FMath::Max(Face.Lids, 0.f) * (1.f - 0.6f * FMath::Clamp(Smile, 0.f, 1.f));
+		Both(TEXT("eyeBlink"), Blink + Squint * 0.2f);
+		Both(TEXT("eyeSquintInner"), Squint * 0.9f);
+		Both(TEXT("eyeWiden"), FMath::Max(-Face.Lids, 0.f) * (1.f - Blink));
+
+		// Glances (degrees to the controls' range; positive Y looks down).
+		const float Side = EyeLook.X / 30.f;
+		const float Down = EyeLook.Y / 25.f;
+		Both(TEXT("eyeLookLeft"), Side);
+		Both(TEXT("eyeLookRight"), -Side);
+		Both(TEXT("eyeLookDown"), Down);
+		Both(TEXT("eyeLookUp"), -Down);
+	}
+
+	TArray<TPair<FName, float>> Curves;
+	for (const TPair<FName, float>& Value : Values)
+	{
+		Curves.Emplace(Value.Key, FMath::Min(Value.Value, 1.f));
+	}
+	Anim->SetCurves(MoveTemp(Curves));
 }
 
 void UCharacterTalkVoice::BindJaw(AActor* Speaker)
@@ -1098,10 +1196,18 @@ void UCharacterTalkVoice::BindJaw(AActor* Speaker)
 		return;
 	}
 
+	// A configured MetaHuman face replaces the speaker's head; the rig below then only turns the head it follows.
+	MetaHumanFace = UTalkFaceAnimInstance::AttachTo(Speaker);
+
 	const FName JawBone = GetDefault<UCharacterTalkSettings>()->JawBone;
 	TInlineComponentArray<USkeletalMeshComponent*> Meshes(Speaker);
 	for (USkeletalMeshComponent* Candidate : Meshes)
 	{
+		// The MetaHuman face, and body meshes that copy the head's pose through it, are not faces to bind.
+		if (Candidate && (Candidate->ComponentHasTag(UTalkFaceAnimInstance::MetaHumanTag) || Cast<UTalkFaceAnimInstance>(Candidate->GetAnimInstance())))
+		{
+			continue;
+		}
 		// Followers copy their leader's pose, so the face is moved on the leader.
 		USkeletalMeshComponent* Mesh = Candidate ? Cast<USkeletalMeshComponent>(Candidate->LeaderPoseComponent.Get()) : nullptr;
 		if (!Mesh)
@@ -1299,8 +1405,33 @@ void UCharacterTalkVoice::ApplyJaw(int32 RigIndex)
 		return Degrees >= 0.f ? Chosen : Chosen.Inverse();
 	};
 
+	// The whole head, done last so everything moved before turns with it: positive pitch nods down (towards the nose),
+	// plus turn and tilt.
+	auto TurnHead = [&]()
+	{
+		if (Rig.HeadBones.Num() > 0 && Pose.IsValidIndex(Rig.Head))
+		{
+			const FVector Pivot = Pose[Rig.Head].GetLocation();
+			const FVector Nose = Pose.IsValidIndex(Rig.NoseTip) ? Pose[Rig.NoseTip].GetLocation() - Pivot : Forward * 10.f;
+			const FQuat Pitch = Directed(Lateral, HeadAngles.X, Nose, false);
+			const FQuat Yaw(Up, FMath::DegreesToRadians(HeadAngles.Y));
+			const FQuat Roll(Forward, FMath::DegreesToRadians(HeadAngles.Z));
+			Turn(Rig.HeadBones, Pivot, Yaw * Roll * Pitch);
+		}
+	};
+
+	// A MetaHuman face copies this pose and shows jaw, lids, brows and eyes itself (UpdateMetaHumanFace); only the head turns.
+	if (MetaHumanFace.IsValid())
+	{
+		if (Settings.bLivelyFace)
+		{
+			TurnHead();
+		}
+		return;
+	}
+
 	// Jaw and lower lip: the voice's loudness plus the expression (a surprised mouth stays a little open).
-	const float JawDegrees = (JawOpen + Face.MouthOpen * 0.35f) * Settings.JawOpenDegrees;
+	const float JawDegrees = (JawOpen + Face.MouthOpen * 0.35f) * Settings.JawOpenDegrees * Style.Jaw;
 	if (JawDegrees > 0.05f)
 	{
 		const FVector Pivot = Pose[Rig.Jaw].GetLocation();
@@ -1325,7 +1456,7 @@ void UCharacterTalkVoice::ApplyJaw(int32 RigIndex)
 
 	// Brows: inner, middle and outer parts move separately (sad raises the inner ends, anger pulls them down and together).
 	const float Brow = Settings.BrowMoveCm;
-	const float Lift = SpeechBrow * 0.6f;
+	const float Lift = SpeechBrow * 0.6f * Style.TalkBrows;
 	Move(Rig.LeftBrowInner, Up * (Face.BrowInner + Lift) * Brow - Lateral * Face.BrowSqueeze * Brow * 0.5f);
 	Move(Rig.RightBrowInner, Up * (Face.BrowInner + Lift) * Brow + Lateral * Face.BrowSqueeze * Brow * 0.5f);
 	Move(Rig.LeftBrowMid, Up * ((Face.BrowInner + Face.BrowOuter) * 0.5f + Lift + Face.BrowTilt * 0.5f) * Brow);
@@ -1377,14 +1508,5 @@ void UCharacterTalkVoice::ApplyJaw(int32 RigIndex)
 	Glance(Rig.LeftEye, Rig.LeftEyeBones);
 	Glance(Rig.RightEye, Rig.RightEyeBones);
 
-	// The whole head last, so everything above moves with it: positive pitch nods down (towards the nose), plus turn and tilt.
-	if (Rig.HeadBones.Num() > 0 && Pose.IsValidIndex(Rig.Head))
-	{
-		const FVector Pivot = Pose[Rig.Head].GetLocation();
-		const FVector Nose = Pose.IsValidIndex(Rig.NoseTip) ? Pose[Rig.NoseTip].GetLocation() - Pivot : Forward * 10.f;
-		const FQuat Pitch = Directed(Lateral, HeadAngles.X, Nose, false);
-		const FQuat Yaw(Up, FMath::DegreesToRadians(HeadAngles.Y));
-		const FQuat Roll(Forward, FMath::DegreesToRadians(HeadAngles.Z));
-		Turn(Rig.HeadBones, Pivot, Yaw * Roll * Pitch);
-	}
+	TurnHead();
 }

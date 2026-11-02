@@ -1,6 +1,7 @@
 #pragma once
 
 #include "AudioCaptureCore.h"
+#include "CharacterTalkChat.h"
 #include "CoreMinimal.h"
 #include "UObject/Object.h"
 #include "CharacterTalkVoice.generated.h"
@@ -62,6 +63,8 @@ public:
 	void SetEmotion(const FString& Emotion);
 	/** The resting expression between replies (from the personality), at 0..1 strength. */
 	void SetMood(const FString& Emotion, float Intensity);
+	/** How the personality carries its face: blinks, glances, head, smirk, lips and how big its expressions are. */
+	void SetFaceStyle(const FCharacterTalkFaceStyle& InStyle) { Style = InStyle; }
 
 	void Tick(float DeltaTime);
 
@@ -113,6 +116,8 @@ private:
 	static FFaceShape ShapeFor(const FString& Emotion);
 	/** Advances blinks, glances, head motion and the expression; ApplyJaw puts them on the bones. */
 	void TickFace(float DeltaTime);
+	/** With a MetaHuman face, turns the face state into its expression curves (RigLogic does the rest). */
+	void UpdateMetaHumanFace();
 
 	void TranscribeWithGemini(const TArray<uint8>& Wav, FOnText OnText, int32 ModelIndex = 0);
 	/** Speech audio (a WAV) for one sentence, or why there is none. */
@@ -179,8 +184,11 @@ private:
 
 	// Face state (see TickFace).
 	TWeakObjectPtr<AActor> FaceTarget;
+	/** The MetaHuman face put on FaceTarget (UCharacterTalkSettings::MetaHumanFace); null keeps the old bone-driven face. */
+	TWeakObjectPtr<USkeletalMeshComponent> MetaHumanFace;
 	FFaceShape Face;
 	FFaceShape MoodShape;
+	FCharacterTalkFaceStyle Style;
 	FFaceShape EmotionShape;
 	float EmotionTimeLeft = 0.f;
 	float FaceTime = 0.f;

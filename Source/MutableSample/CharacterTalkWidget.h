@@ -33,6 +33,12 @@ public:
 	void StartListening();
 	void StopListening();
 
+	/**
+	 * For trying faces (console: Talk.Face <personality index> [emotion]): shows that personality's face and mood, and the
+	 * emotion as a reply would, without changing the conversation.
+	 */
+	void PreviewFace(int32 Personality, const FString& Emotion);
+
 protected:
 	virtual void BuildTree(UCanvasPanel* Root) override;
 	virtual void NativeConstruct() override;

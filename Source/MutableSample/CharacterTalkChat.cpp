@@ -253,14 +253,30 @@ const TArray<FCharacterTalkScenario>& UCharacterTalkChat::Scenarios()
 const TArray<FCharacterTalkPersonality>& UCharacterTalkChat::Personalities()
 {
 	// Voices are Gemini prebuilt male voices chosen to fit each personality (used when VoiceProvider=Gemini).
+	// Faces: expressiveness, blink rate, look away, glance range, gaze down, head pitch, head roll, head motion, smirk,
+	// talking brows, lip press, jaw (see FCharacterTalkFaceStyle).
 	static const TArray<FCharacterTalkPersonality> List = {
-		{ TEXT("Hiền lành"), TEXT("Hiền lành, ấm áp và kiên nhẫn; nói nhỏ nhẹ, hay hỏi han, động viên và quan tâm tới người đối diện."), TEXT("Achird"), TEXT("vui"), 0.4f },
-		{ TEXT("Hài hước"), TEXT("Vui tính, hay pha trò, thích chơi chữ và kể chuyện cười nhẹ nhàng, nhưng vẫn trả lời đúng điều được hỏi."), TEXT("Puck"), TEXT("vui"), 0.6f },
-		{ TEXT("Nghiêm nghị"), TEXT("Nghiêm túc, điềm đạm và trọng lễ nghĩa; nói ngắn gọn, chừng mực, không đùa cợt."), TEXT("Alnilam"), TEXT("bình thường"), 0.f },
-		{ TEXT("Nóng tính"), TEXT("Nóng tính và thẳng tính, hay càu nhàu, cằn nhằn, nhưng thật ra tốt bụng và vẫn giúp đỡ; không bao giờ chửi tục hay xúc phạm."), TEXT("Algenib"), TEXT("tức giận"), 0.35f },
-		{ TEXT("Tinh nghịch"), TEXT("Lém lỉnh, tinh nghịch, nói chuyện nhanh nhảu, hay trêu đùa và tò mò về mọi thứ."), TEXT("Sadachbia"), TEXT("vui"), 0.5f },
-		{ TEXT("Thông thái"), TEXT("Từng trải và hiểu biết rộng; nói chậm rãi, sâu sắc và thỉnh thoảng dùng ca dao, tục ngữ."), TEXT("Charon"), TEXT("suy tư"), 0.35f },
-		{ TEXT("Nhút nhát"), TEXT("Nhút nhát, rụt rè, hay ngập ngừng khi nói và dễ ngại ngùng, nhưng rất chân thành và tốt bụng."), TEXT("Enceladus"), TEXT("buồn"), 0.25f },
+		// Soft smile, head gently tilted, unhurried blinks and movements.
+		{ TEXT("Hiền lành"), TEXT("Hiền lành, ấm áp và kiên nhẫn; nói nhỏ nhẹ, hay hỏi han, động viên và quan tâm tới người đối diện."), TEXT("Achird"), TEXT("vui"), 0.4f,
+			{ 0.9f, 0.85f, 0.35f, 0.8f, 0.f, 0.f, 2.5f, 0.8f, 0.f, 1.f, 0.f, 0.85f } },
+		// Big expressions, a lopsided grin, brows jumping on the punchlines, a lively head.
+		{ TEXT("Hài hước"), TEXT("Vui tính, hay pha trò, thích chơi chữ và kể chuyện cười nhẹ nhàng, nhưng vẫn trả lời đúng điều được hỏi."), TEXT("Puck"), TEXT("vui"), 0.6f,
+			{ 1.25f, 1.1f, 0.4f, 1.2f, 0.f, 0.f, 0.f, 1.5f, 0.25f, 1.8f, 0.f, 1.15f } },
+		// Little expression, a steady gaze, few blinks, lips set, the head almost still.
+		{ TEXT("Nghiêm nghị"), TEXT("Nghiêm túc, điềm đạm và trọng lễ nghĩa; nói ngắn gọn, chừng mực, không đùa cợt."), TEXT("Alnilam"), TEXT("bình thường"), 0.f,
+			{ 0.6f, 0.6f, 0.15f, 0.5f, 0.f, -1.f, 0.f, 0.5f, 0.f, 0.4f, 0.35f, 0.85f } },
+		// A glare from under lowered brows, pressed lips, sharp head moves, a wide mouth when it snaps.
+		{ TEXT("Nóng tính"), TEXT("Nóng tính và thẳng tính, hay càu nhàu, cằn nhằn, nhưng thật ra tốt bụng và vẫn giúp đỡ; không bao giờ chửi tục hay xúc phạm."), TEXT("Algenib"), TEXT("tức giận"), 0.55f,
+			{ 1.2f, 1.f, 0.3f, 1.f, 0.f, 2.f, 0.f, 1.4f, 0.f, 0.6f, 0.3f, 1.2f } },
+		// A cheeky one-sided smile, quick wide glances, a tilted head, everything a bit much.
+		{ TEXT("Tinh nghịch"), TEXT("Lém lỉnh, tinh nghịch, nói chuyện nhanh nhảu, hay trêu đùa và tò mò về mọi thứ."), TEXT("Sadachbia"), TEXT("vui"), 0.5f,
+			{ 1.3f, 1.2f, 0.55f, 1.4f, 0.f, 0.f, -3.f, 1.6f, -0.45f, 1.6f, 0.f, 1.1f } },
+		// Calm and measured: slow blinks and nods, glances up while thinking (its mood), a faint set to the lips.
+		{ TEXT("Thông thái"), TEXT("Từng trải và hiểu biết rộng; nói chậm rãi, sâu sắc và thỉnh thoảng dùng ca dao, tục ngữ."), TEXT("Charon"), TEXT("suy tư"), 0.55f,
+			{ 0.75f, 0.7f, 0.5f, 0.8f, 0.f, 0.f, 0.f, 0.7f, 0.f, 0.8f, 0.1f, 0.9f } },
+		// Avoids the player's eyes and looks down, blinks a lot, head lowered and tilted, lips pressed, speaks small.
+		{ TEXT("Nhút nhát"), TEXT("Nhút nhát, rụt rè, hay ngập ngừng khi nói và dễ ngại ngùng, nhưng rất chân thành và tốt bụng."), TEXT("Enceladus"), TEXT("buồn"), 0.4f,
+			{ 0.7f, 1.6f, 0.7f, 1.2f, 6.f, 4.f, 2.f, 0.6f, 0.f, 0.5f, 0.4f, 0.7f } },
 	};
 	return List;
 }
