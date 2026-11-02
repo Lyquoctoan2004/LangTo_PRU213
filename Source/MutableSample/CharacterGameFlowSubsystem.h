@@ -25,8 +25,13 @@ public:
 	virtual bool ShouldCreateSubsystem(UObject* Outer) const override;
 	virtual void OnWorldBeginPlay(UWorld& InWorld) override;
 
+	/** Opens the talk area as "Xác nhận nói chuyện" does (also the console command Talk.Open). */
+	void OpenTalk() { HandleTalkConfirmed(); }
+
 private:
 	void TryBindLobbyConfirmButton();
+	/** Puts the configured MetaHuman face on the lobby character once Mutable has built its head (polled until then). */
+	void TryAttachMetaHumanFace();
 	void TrySpawnCustomizedPlayer();
 	ACustomizedCharacterStart* FindOrCreateCharacterStart();
 	void TravelToGameplayMap();
@@ -54,7 +59,9 @@ private:
 
 	FTimerHandle PollTimer;
 	FTimerHandle TravelTimer;
+	FTimerHandle FaceTimer;
 	float ElapsedTime = 0.0f;
+	float FaceElapsedTime = 0.0f;
 	bool bTravelRequested = false;
 	bool bCharacterSpawned = false;
 	TWeakObjectPtr<AActor> SpawnedVisual;

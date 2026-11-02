@@ -8,6 +8,7 @@
 #include "EngineUtils.h"
 #include "GroomComponent.h"
 #include "GroomAsset.h"
+#include "TalkFaceAnimInstance.h"
 #include "TimerManager.h"
 
 DEFINE_LOG_CATEGORY_STATIC(LogGroomRebind, Log, All);
@@ -112,7 +113,8 @@ void UGroomRebindSubsystem::UpdateActorGrooms(AActor* Actor)
 
 	for (UGroomComponent* Groom : Grooms)
 	{
-		if (!Groom)
+		// MetaHuman grooms are bound to the MetaHuman face, which is not a Mutable mesh.
+		if (!Groom || Groom->ComponentHasTag(UTalkFaceAnimInstance::MetaHumanTag))
 		{
 			continue;
 		}

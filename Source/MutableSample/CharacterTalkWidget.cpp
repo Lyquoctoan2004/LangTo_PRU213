@@ -18,6 +18,7 @@
 #include "Components/WrapBox.h"
 #include "Framework/Application/IInputProcessor.h"
 #include "Framework/Application/SlateApplication.h"
+#include "HAL/IConsoleManager.h"
 #include "HAL/PlatformTime.h"
 #include "Styling/CoreStyle.h"
 
@@ -94,6 +95,36 @@ namespace CharacterTalkUi
 		TWeakObjectPtr<UCharacterTalkWidget> Widget;
 		FKey Key;
 	};
+
+	/** The open talk area, for the Talk.Face console command. */
+	TWeakObjectPtr<UCharacterTalkWidget> ActiveWidget;
+
+	static FAutoConsoleCommand PreviewFaceCommand(
+		TEXT("Talk.Face"),
+		TEXT("Talk.Face <personality index> [emotion]: shows a personality's face (and an emotion tag such as vui or ngạc nhiên) in the open talk area."),
+		FConsoleCommandWithArgsDelegate::CreateLambda([](const TArray<FString>& Args)
+		{
+			if (UCharacterTalkWidget* Widget = ActiveWidget.Get())
+			{
+				const TArray<FString> EmotionWords(Args.GetData() + FMath::Min(1, Args.Num()), FMath::Max(0, Args.Num() - 1));
+				Widget->PreviewFace(Args.Num() > 0 ? FCString::Atoi(*Args[0]) : 0, FString::Join(EmotionWords, TEXT(" ")));
+			}
+		}));
+}
+
+void UCharacterTalkWidget::PreviewFace(int32 Personality, const FString& Emotion)
+{
+	const TArray<FCharacterTalkPersonality>& List = UCharacterTalkChat::Personalities();
+	if (!List.IsValidIndex(Personality))
+	{
+		return;
+	}
+	Voice->SetMood(List[Personality].Mood, List[Personality].MoodIntensity);
+	Voice->SetFaceStyle(List[Personality].Face);
+	if (!Emotion.IsEmpty())
+	{
+		Voice->SetEmotion(Emotion);
+	}
 }
 
 FKey UCharacterTalkWidget::PushToTalkKey()
@@ -116,6 +147,7 @@ void UCharacterTalkWidget::BuildTree(UCanvasPanel* Root)
 {
 	Chat = NewObject<UCharacterTalkChat>(this);
 	Voice = NewObject<UCharacterTalkVoice>(this);
+	CharacterTalkUi::ActiveWidget = this;
 
 	// Chat column on the right, full height, leaving the character visible on the left like RMHLipSync's W_Main.
 	UBorder* Panel = MakePanel(CharacterTalkUi::PanelColor);
@@ -248,6 +280,7 @@ void UCharacterTalkWidget::ApplyChoices(int32 Scenario, int32 Personality)
 	// One voice for every personality unless bVoicePerPersonality (an empty name uses GeminiVoice).
 	Voice->VoiceName = GetDefault<UCharacterTalkSettings>()->bVoicePerPersonality ? Chat->GetPersonality().Voice : FString();
 	Voice->SetMood(Chat->GetPersonality().Mood, Chat->GetPersonality().MoodIntensity);
+	Voice->SetFaceStyle(Chat->GetPersonality().Face);
 	CharacterTalkUi::ChosenScenario = Scenario;
 	CharacterTalkUi::ChosenPersonality = Personality;
 	PendingScenario = Scenario;

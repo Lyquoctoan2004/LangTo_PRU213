@@ -82,6 +82,29 @@ public:
 	UPROPERTY(Config) float BlinkDegrees = 25.f;
 	UPROPERTY(Config) float HeadMotionDegrees = 2.5f;
 	UPROPERTY(Config) float EyeMotionDegrees = 4.f;
+	/**
+	 * A MetaHuman face mesh (built in MetaHuman Creator) put on the speaker in place of its own head while talking; its
+	 * RigLogic shows the expressions and lip sync (see UTalkFaceAnimInstance). Empty keeps the speaker's head and moves its bones.
+	 */
+	UPROPERTY(Config) FSoftObjectPath MetaHumanFace;
+	/** Grooms for that face (hair, brows, lashes...), each with its "<groom>_Binding" asset in the same folder. */
+	UPROPERTY(Config) TArray<FSoftObjectPath> MetaHumanGrooms;
+	/** How far the MetaHuman jaw opens at full loudness (CTRL_expressions_jawOpen, 0..1). */
+	UPROPERTY(Config) float MetaHumanJawOpen = 0.45f;
+	/** Mutable "Skin Tone" (0..1) set on the body when the MetaHuman face goes on, so neck and hands match it; negative leaves it. */
+	UPROPERTY(Config) float MetaHumanBodySkinTone = -1.f;
+	/**
+	 * How thin the body's own upper neck is made under the MetaHuman face, so it stays inside the face's neck (1 = unchanged).
+	 * These neck settings are editable while playing (Python: the class default object) to tune them by eye.
+	 */
+	UPROPERTY(Config, EditAnywhere, Category = "MetaHuman") float MetaHumanBodyNeckScale = 1.f;
+	/** The same for the body's lower neck (neck_01); too thin opens a hole above the shirt's neckline. */
+	UPROPERTY(Config, EditAnywhere, Category = "MetaHuman") float MetaHumanBodyLowerNeckScale = 1.f;
+	/**
+	 * How thin the base of the MetaHuman neck is made (neck_01, and its upper chest shrunk every way), so it stays inside the
+	 * body's neck and clothes for every body type instead of showing through them (1 = unchanged).
+	 */
+	UPROPERTY(Config, EditAnywhere, Category = "MetaHuman") float MetaHumanNeckBaseScale = 1.f;
 };
 
 /** A role the character plays in the conversation (the game's story, an IT lecturer, a close friend...). */
@@ -95,6 +118,32 @@ struct FCharacterTalkScenario
 	FString FallbackGreeting;
 };
 
+/** How a personality carries its face, on top of its mood and each reply's emotion (see UCharacterTalkVoice). */
+struct FCharacterTalkFaceStyle
+{
+	/** Scales every emotion and the mood (1 = as defined in UCharacterTalkVoice::ShapeFor). */
+	float Expressiveness = 1.f;
+	/** How often it blinks, relative to normal. */
+	float BlinkRate = 1.f;
+	/** Share of glances that leave the player (0..1) and how far they go (times EyeMotionDegrees). */
+	float LookAway = 0.45f;
+	float GlanceRange = 1.f;
+	/** Resting gaze below the player's eyes, head nod down and head tilt (degrees). */
+	float GazeDown = 0.f;
+	float HeadPitch = 0.f;
+	float HeadRoll = 0.f;
+	/** Head movement while talking (times HeadMotionDegrees). */
+	float HeadMotion = 1.f;
+	/** A one-sided smile, at rest and more while talking (0..1; positive pulls the left corner, negative the right). */
+	float Smirk = 0.f;
+	/** How much the brows lift on loud syllables (1 = normal). */
+	float TalkBrows = 1.f;
+	/** Lips pressed together when not speaking (0..1). */
+	float LipPress = 0.f;
+	/** How wide the mouth opens when speaking (1 = normal). */
+	float Jaw = 1.f;
+};
+
 /** A way the character talks within its role: tone (added to the system prompt) and the voice that reads it. */
 struct FCharacterTalkPersonality
 {
@@ -104,6 +153,7 @@ struct FCharacterTalkPersonality
 	/** Resting expression between replies (an emotion tag, see UCharacterTalkVoice::SetEmotion) and its strength. */
 	FString Mood;
 	float MoodIntensity = 0.f;
+	FCharacterTalkFaceStyle Face;
 };
 
 /** One conversation with the player's character: keeps the history and sends it to the configured LLM. */
